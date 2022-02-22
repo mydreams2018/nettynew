@@ -5,8 +5,8 @@ import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.channel.socket.nio.NioSocketChannel;
 
 public class EachServer {
 
@@ -16,10 +16,11 @@ public class EachServer {
         try{
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap.group(nioEventLoopGroup).channel(NioServerSocketChannel.class)
-                    .localAddress(9999).childHandler(new ChannelInitializer<SocketChannel>() {
+                    .localAddress(9999).childHandler(new ChannelInitializer<NioSocketChannel>() {
                     //添加inboundHandle 到子channel 的pipeline 链路  [标记为Sharable 所有客户端都共用一个]
                 @Override
-                protected void initChannel(SocketChannel ch) throws Exception {
+                protected void initChannel(NioSocketChannel ch) throws Exception {
+                    System.out.println("ServerinitChannel");
                     ch.pipeline().addLast(echoServerInboundHandle);
                 }
             });

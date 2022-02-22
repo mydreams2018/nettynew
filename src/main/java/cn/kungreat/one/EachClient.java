@@ -23,7 +23,7 @@ public class EachClient {
                     //添加inboundHandle 到子channel 的pipeline 链路
                 @Override
                 protected void initChannel(SocketChannel ch) throws Exception {
-                    ch.pipeline().addLast( new EchoClientHandler());
+                    ch.pipeline().addLast(new EchoClientHandler());
                 }
             });
             //使用的是NIO 就是异步模式连接服务器、调用sync会阻塞直到绑定完成

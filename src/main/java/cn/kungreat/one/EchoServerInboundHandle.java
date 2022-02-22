@@ -36,7 +36,7 @@ public class EchoServerInboundHandle extends ChannelInboundHandlerAdapter {
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
         System.out.println("SchannelReadComplete");
-        //将未决消息写出 并且刷新 然后关闭流
+        //将未决消息写出 并且刷新 返回 ChannelFuture 添加监听器事件完成后关闭流
         ctx.writeAndFlush(Unpooled.EMPTY_BUFFER).addListener(ChannelFutureListener.CLOSE);
     }
 
