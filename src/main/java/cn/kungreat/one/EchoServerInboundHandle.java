@@ -2,7 +2,6 @@ package cn.kungreat.one;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -11,6 +10,7 @@ import io.netty.util.CharsetUtil;
 @ChannelHandler.Sharable //标记可以被多个channel安全地共享
 public class EchoServerInboundHandle extends ChannelInboundHandlerAdapter {
 
+    private String message;
     /*
     * ChannelInboundHandlerAdapter 当channelRead 方法完成时
     * 我们仍然需要把消息回送给客户端、而write是异步的、
@@ -19,25 +19,27 @@ public class EchoServerInboundHandle extends ChannelInboundHandlerAdapter {
 
 
     /*
-     * 数据可能不是一次性到达、分批发过来
+     *数据可能不是一次性到达、分批发过来
      */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+//          把时间长的任务可以添加到当前的 异步队列中执行 没有先后顺序要求的话 还是一个单线程的 由当前线程执行完后再执行队列中任务
+        ctx.channel().eventLoop().execute(()-> System.out.println("execute"));
+//        ctx.channel().eventLoop().schedule();
+
+        Thread.sleep(20000);
         ByteBuf byteBuf = (ByteBuf) msg;
-        System.out.println("Sread:"+byteBuf.toString(CharsetUtil.UTF_8));
-        //写入数据
-        ctx.write(msg);
+        this.message=byteBuf.toString(CharsetUtil.UTF_8);
+        System.out.println("Sread:"+this.message);
     }
 
-    /*未决消息
-    * 是指目前暂存在channelOutboundBuffer 中的消息
-    * 在下一次调用flush 或者 writeAndFlush 方法时将会尝试写出到套接字
+    /*
+    * 在下一次调用flush 或者 writeAndFlush
     */
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
         System.out.println("SchannelReadComplete");
-        //将未决消息写出 并且刷新 返回 ChannelFuture 添加监听器事件完成后关闭流
-        ctx.writeAndFlush(Unpooled.EMPTY_BUFFER).addListener(ChannelFutureListener.CLOSE);
+        ctx.writeAndFlush(Unpooled.copiedBuffer(this.message.getBytes("UTF-8")));
     }
 
     /*
