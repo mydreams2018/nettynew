@@ -2,10 +2,20 @@ package cn.kungreat.one;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import io.netty.channel.group.ChannelGroup;
+import io.netty.channel.group.DefaultChannelGroup;
+import io.netty.handler.timeout.IdleStateHandler;
+import io.netty.util.concurrent.GlobalEventExecutor;
 
 import java.nio.charset.Charset;
+import java.util.concurrent.TimeUnit;
 
 public class ByteBufTs {
+    //定义一个channel组 管理所有的cnannel  GlobalEventExecutor.INSTANCE全局事件执行器是个单例  组有一套自动的管理机制
+    private static final ChannelGroup CHANNEL_GROUP = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+//    IdleStateHandler 心逃检查  会把事件IdleStateEvent传给 给下一个handler 会调用UserEventTriggered方法
+    private static final IdleStateHandler IDLE_STATE_HANDLER = new IdleStateHandler(3,5
+            ,10, TimeUnit.SECONDS);
 
     public static void main(String[] args) {
         ByteBuf buffer = Unpooled.buffer(16);
