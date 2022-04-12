@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的解构语法</title>
+</head>
+
+<body>
+    <script>
+        // 从数组或对象中提取值，对变量进行赋值，这被称为解构
+        // var obj = {
+        //     username: "张三",
+        //     age: 20,
+        //     city: "广州"
+        // }
+        // var username = obj.username;
+        // var age = obj.age;
+        // var city = obj.city;
+        // console.log(username, age, city);
+        let obj = {
+            username: "张三",
+            age: 20,
+            city: "广州",
+            fn: function () {
+                console.log(11);
+            }
+        }
+        //条件 变量的名字要和对象的key值相同  这个时候 就会把对象中key对应的value值赋值给对应的变量
+        //完全解构
+        let { username, age, city, fn } = obj;
+        console.log(username, age, city, fn);
+        //部分解构    变量的重命名 语法   原来的变量名:要改变的变量名
+
+        //Math.floor    Math.random()
+        // let { 方法名: 自己重命名 } = 对象;语法
+        let { floor: fl } = Math;
+        console.log(fl(-12.5));
+        console.log(Math.random());
+    </script>
+</body>
+
+</html>

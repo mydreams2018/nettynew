@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>const</title>
+</head>
+<body>
+
+<button>01</button>
+<button>02</button>
+<button>03</button>
+<button>04</button>
+<button>05</button>
+
+<script>
+    //const 常量是块级范围的，非常类似用 let 语句定义的变量。但常量的值是无法（通过重新赋值）改变的，也不能被重新声明。
+    const number = 42;
+    try {
+        number = 99;
+    } catch (err) {
+        console.log(err);
+        // expected output: TypeError: invalid assignment to const `number'
+        // Note - error messages will vary depending on browser
+    }
+    console.log(number);
+    // expected output: 42
+
+    const nums = [0,1,2];
+    // nums=[4,5,6];  不能用=号再次赐值
+    nums[0]=4;
+    nums[1]=5;
+    nums[2]=6;
+    console.log(nums);
+</script>
+</body>
+</html>

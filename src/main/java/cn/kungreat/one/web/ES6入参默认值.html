@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function es6param(a=0,b=0,c=0) {
+            return a+b+c;
+        }
+
+        console.log(es6param(1,5));
+
+        function objparam({x,y}) {
+            console.log(x,y);
+        }
+        objparam(5,10);//undefined undefined
+        objparam({x:5,y:10});//5 10
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拓展运算符</title>
+</head>
+
+<body>
+    <script>
+        // 需求：定义两个数组  用两种方法给数组进行合并
+
+        let arr = [1, 2, 3, 4, 5];
+        let arr1 = [6, 7, 8, 9];
+        let newArr = [...arr, ...arr1];
+        let newArr1 = arr.concat(arr1);
+        console.log(newArr1);
+        console.log(newArr);
+        // 循环遍历
+
+        // console.log(...arr);//展开数组
+        // console.log(Math.max(...arr));
+        // 展开对象
+        let obj = {
+            name: '张三',
+            age: 20
+        }
+        let obj1 = {
+            city: "广州",
+            email: "assddf@163.com"
+        }
+        // let newObj = { ...obj, ...obj1 }//对象合并不改变原对象的值
+        // newObj.age = 50;
+        // console.log(newObj);
+        // console.log();
+        //合并 对象的另外一种方法  assign将第一个对象后面的对象的值追加到了第一个对象内
+        //使用Object.assign()去合并对象时  如果不想改变原对象的内容，在()里第一个参数设置为{}
+        let newObj = Object.assign({}, obj, obj1);
+        newObj.age = 50;
+        console.log(newObj);
+    </script>
+</body>
+
+</html>

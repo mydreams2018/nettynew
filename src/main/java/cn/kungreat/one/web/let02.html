@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+
+<button>01</button>
+<button>02</button>
+<button>03</button>
+<button>04</button>
+<button>05</button>
+    <script>
+
+        var nodeListOf = document.querySelectorAll("button");
+        // var特性. x变量 最后是等于nodeListOf.length-1   onclick事件触发时 x值已经固定
+      /*  for (var x=0;x< nodeListOf.length;x++) {
+            nodeListOf[x].onclick=function () {
+                console.log(x);
+            }
+        }*/
+        //这里可以访问到 var x...恶心的语法解释定义
+        // console.log(x);
+
+
+        // let特性. x变量 局部性质. 相当是每次使用时存了一个副本.传递下去.
+        for (let x=0;x< nodeListOf.length;x++) {
+            nodeListOf[x].onclick=function () {
+                console.log(x);
+            }
+        }
+    </script>
+</body>
+</html>

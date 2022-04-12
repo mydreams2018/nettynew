@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-在for循环中使用var和let</title>
+</head>
+
+<body>
+    <!-- 需求：页面内有5个按钮  点击某个按钮输出对应索引 5个按钮索引是(0,1,2,3,4)
+        发生的事件是什么  用到了哪些方法   牵扯到了哪些对象   发生的结果是什么
+    -->
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+
+    <script>
+        var btns = document.getElementsByTagName("button");//数据集合(要使用for循环进行事件绑定)
+        // for (var i = 0; i < btns.length; i++) {
+        //     // ES5如何解决的呢  存标签属性
+        //     btns[i].setAttribute("myIndex", i);
+        //     //存对象属性
+        //     // btns[i].myIndex = i;
+        //     btns[i].onclick = function () {//事件  异步
+        //         console.log(this.getAttribute("myIndex"));//对象.方法名   this  指向该对象
+        //     }
+        // }
+        //-----------------ES6解决
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].onclick = function () {//事件  异步
+                console.log(i);
+            }
+        }
+    </script>
+</body>
+
+</html>

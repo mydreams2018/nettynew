@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var arrs = [1,2,3,6,5,6,5,6,5];
+
+        console.log(...arrs);//1 2 3 6 5 6 5 6 5
+        console.log(Math.max(...arrs));//6
+
+        var obj1={
+            name:"fgd",
+            age:13
+        }
+        var obj2={
+            addreee:"fgd",
+            phone:13
+        }
+        var obj ={...obj1,...obj2};
+        console.log(obj);//{name: 'fgd', age: 13, addreee: 'fgd', phone: 13}
+        obj.addreee="火唱片"; //新对象地址 不影响原对象
+        console.log(obj2);//{addreee: 'fgd', phone: 13}
+        console.log(obj);//{name: 'fgd', age: 13, addreee: '火唱片', phone: 13}
+
+
+        // Object.assign() 方法用于将所有可枚举属性的值从一个或多个源对象分配到目标对象。它将返回目标对象。
+        const target = { a: 1, b: 2 };
+        const source = { b: 4, c: 5 };
+        const returnedTarget = Object.assign(target, source);
+        console.log(target);
+        // expected output: Object { a: 1, b: 4, c: 5 }
+        console.log(returnedTarget);
+        // expected output: Object { a: 1, b: 4, c: 5 }
+        console.log(source);//{b: 4, c: 5}
+
+        function add(...nums) {
+            let sum = 0;
+            nums.forEach(function (item,index) {
+                sum+=item;
+            });
+            return sum;
+        }
+
+        console.log(add(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+    </script>
+</body>
+</html>

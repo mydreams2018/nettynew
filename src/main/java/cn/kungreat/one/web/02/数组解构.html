@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //从对象中提取数据 称为解构
+        var user={
+            name:"kungreat",
+            age:"18",
+            sex:1
+        }
+        var arrs = [1,2,3,4,5,6];
+        //一种简写吧. 重对象user 获得指定的值
+       let [,,a,b,c,d] = arrs;
+       console.log(b);//3
+
+        var arrs2 = [1,2,3,[4,5,6],7,8,9];
+        let [,,,dde] =arrs2;
+        console.log(dde);//[4,5,6]
+
+    </script>
+</body>
+</html>

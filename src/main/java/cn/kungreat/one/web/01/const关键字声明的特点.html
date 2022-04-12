@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-const关键字声明的特点</title>
+</head>
+
+<body>
+    <script>
+        // 1： 一旦声明就必须赋值
+        const DATA = 10;
+        console.log(DATA);
+        // 2： 可以重复声明吗？答案是不可以
+        // const DATA = 10;
+        // const DATA = 20;
+        // console.log(DATA);
+        // 3：不能修改值
+        // const DATA = 10;
+        // DATA = 20;
+        // console.log(DATA);
+        // 4： 拥有块级作用域
+        // {
+        //     const DATA = 10;
+        // }
+        // console.log(DATA);
+        // 5：引用类型的数据   数组和对象  引用数据类型  引用地址不可以修改  但是里面的值是可以修改的
+        const arr = [10, 20, 30];
+        // arr = [4, 5, 6]//常量不可以再次赋值
+        arr[0] = 4;
+        arr[1] = 5;
+        arr[2] = 6;
+        console.log(arr);
+
+    </script>
+</body>
+
+</html>

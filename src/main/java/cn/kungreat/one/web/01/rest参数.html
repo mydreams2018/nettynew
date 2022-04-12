@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rest 参数</title>
+</head>
+
+<body>
+    <script>
+        /*
+        1：...rest参数得到的是一个真数组
+        2：重点是...   不是rest    ...是语法  rest是形参
+        3：剩余参数（返回一个数组）
+        4:Rest参数必须是最后一个形式参数
+        */
+        function add(...c) {
+            c.forEach(function (item) {
+                console.log(item);
+            })
+        }
+        add(1, 2, 3, 4, 5);
+    </script>
+</body>
+
+</html>

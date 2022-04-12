@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //从对象中提取数据 称为解构
+        var user={
+            name:"kungreat",
+            age:"18",
+            sex:1
+        }
+        //一种简写吧. 重对象user 获得指定的值
+       // let {name,age,sex,txs} = user;
+       // console.log(name);//txs
+       // console.log(txs);//undefined
+
+//取age 的值 设置到变量myage里
+        let {age:myage} = user;
+        console.log(myage);//18
+       // console.log(age);//age is not defined
+
+        //方法引用
+        var {random:rn} = Math;
+        console.log(rn());
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // let 语句声明一个块级作用域的本地变量，并且可选的将其初始化为一个值。
+        let x = 1;
+
+        if (x === 1) {
+            let x = 2;
+            console.log(x);
+            // expected output: 2
+        }
+        console.log(x);
+        // expected output: 1
+
+    </script>
+</body>
+</html>

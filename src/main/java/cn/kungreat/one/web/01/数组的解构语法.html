@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 思考：  对象是否有序？  无序  键值对存在
+        let obj = {
+            user: "张三",
+            age: "30",
+            city: "广州"
+        }
+        console.log(obj);
+        // 数组：一系列有序的数据集合
+        let arr = [1, 2, 3, 4];
+        // //完全解构
+        let [a, b, c, d] = arr;
+        console.log(a, b, c, d);
+        // //部分解构
+        let [a11] = arr;//此时的a代表索引0 处的值
+        console.log(a11);
+        // //解构数组中间的值  解构第3个值 需要用到,,占位
+        // let [, , c] = arr;   //let d = arr[99];//去除数组中第100个值
+        // console.log(c);
+        // 复合解构
+        // let arr = [1, 2, 3, [4, 5, 6], 7];//二维数组
+        // let [a, b, c, [d, e, f], g] = arr;
+        // console.log(a, b, c, d, e, f, g);
+        // --------------------------字符串解构
+        //完全解构
+        // let str = "qwe";
+        // let [a,b,c] = str;
+        // console.log(a, b, c);
+        // let str = "ES6语法真香";
+        // //部分解构
+        // let [a, b, c] = str;
+        // console.log(a, b, c);
+        // 交换两个变量的值
+        // var a = 10, b = 20
+        // var c = b;
+        // b = a;
+        // a = c;
+        // console.log(a, b);
+        let a2 = 10, b2 = 20;
+        [b2, a2] = [a2, b2];
+        // console.log(arr);
+        // [b, a] = [a, b]
+        console.log(a2, b2);
+    </script>
+</body>
+
+</html>
