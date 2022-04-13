@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var fun1 = function (a,b) {
+            console.log(a);
+        }
+
+        var fun2 = (a,b)=>{console.log(a);}
+
+        var fun3 = (a,b)=>console.log(a);
+        fun3(12);
+
+        var fun4 = (a,b)=> {return a+b};
+        console.log(fun4(12, 12));
+        //省略 return
+        var fun5 = (a,b)=>  a+b;
+        console.log(fun5(12, 12));
+
+
+        var fun6 = (a,b)=> {return {x:a,y:b}};
+        console.log(fun6(12, 12));//{x: 12, y: 12}
+
+        //不能使用 arguments
+        //var fun7 = (a,b)=> {console.log(arguments)};
+        //console.log(fun7(12, 12));// arguments is not defined
+
+        //可变参数
+        var fun8 = (...rest)=> {console.log(rest)};
+        console.log(fun8(12, 12));
+
+    </script>
+</body>
+</html>

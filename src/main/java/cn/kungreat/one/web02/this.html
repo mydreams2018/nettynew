@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //谁调用就是谁的 this 谁调用就是谁的 this 谁调用就是谁的 this
+       console.log(this);//window
+
+        function sere() {
+            console.log(this);//window
+        }
+       sere();
+
+        var objcs = {
+            nm:"kungreat",
+            age:18,
+            whatFK:this,//window
+            fns:function () {
+                console.log(this);//objcs
+            }
+        }
+       objcs.fns();
+       console.log(objcs.whatFK);
+
+       window.setTimeout(function () {
+           console.log(this);//window
+       },1000);
+    </script>
+</body>
+</html>

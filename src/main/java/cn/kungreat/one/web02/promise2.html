@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <script>
+        // Promise 对象用于表示一个异步操作的最终完成 (或失败)及其结果值。
+        console.log(Promise);
+
+        console.log($);
+
+
+        const myPromise = new Promise(function (resolve, reject) {
+            $.ajax({
+                url: "this.html",
+                type: "post",
+                crossDomain:true,
+                data:{
+                    datatype: "java",
+                    orderType: "create_time",
+                    currentPage: 1,
+                    classId: 1
+                },
+                success: function(data){
+                    console.log("success");
+                    resolve(data);
+                },
+                error:function (err) {
+                    console.log(err);
+                }
+            });
+        });
+        // Promise 不论成功或失败都会调用 then
+        // catch() 只有当 promise 失败时才会调用
+        //then  成功的时候  catch 失败的时候
+        myPromise.then((resolve) => {
+            console.log(resolve);
+        }).catch((reject) => {
+            console.log('处理失败的  ('+reject+')');
+        });
+
+        //job1.then(job2).then(job3).catch(handleError);
+
+    </script>
+</body>
+</html>

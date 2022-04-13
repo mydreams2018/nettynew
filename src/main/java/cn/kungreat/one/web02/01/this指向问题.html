@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * 1:全局打印this  指向window(没人这么用)
+         * 2:全局调用方法打印this  指向window
+         * 3:对象的方法中打印this , this指向该对象
+         * 4:对象中存一个属性值为this   此时this指向window
+         * 5:定时器中使用this指向window
+         * 6:此时箭头函数中的this指向了window(原因：箭头函数没有固定的this指向，指向外层作用域)
+        */
+        //1:全局打印this  指向window(没人这么用)
+        console.log(this);//指向window
+        // 2:全局定义一个函数，函数内打印this
+        // function fn() {
+        //     console.log(this);
+        // }
+
+        //定义一个对象
+        let obj = {
+            user: "123",
+            pwd: "123",
+            that: this,//this 指向window
+            //在对象中定义方法
+            eat: function () {
+                console.log("爱吃螺蛳粉，加麻加辣");
+                console.log(this);//obj
+            },
+            //在对象中定义方法
+            sleep: () => {
+                console.log("生前无需多睡，死后必定长眠");
+                console.log(this);//obj
+            }
+        }
+        obj.eat();
+        obj.sleep();//箭头函数中this指向外层作用域，外层作用域刚好是window  所以指向了window
+
+        // 定时器中的this指向   定时器的完整语法   window.setTimeout() 对象.方法() this就指向该对象
+        window.setTimeout(function () {
+            console.log(this);
+        }, 2000)
+
+    </script>
+</body>
+
+</html>

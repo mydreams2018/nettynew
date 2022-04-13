@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-箭头函数的使用场景</title>
+</head>
+
+<body>
+    <script>
+        //1：之前使用的回调函数有哪些：(forEach  setTimeout)
+        //在定时器中使用箭头函数
+        setTimeout(() => {
+            console.log("这里使用了箭头函数");
+        }, 2000)
+        //使用forEach遍历一个数组，用箭头函数完成
+        let arr = [1, 2, 3, 4, 5];
+
+        //下面是简写形式（不硬性要求掌握）
+        arr.forEach(item => console.log(item));
+    </script>
+</body>
+
+</html>

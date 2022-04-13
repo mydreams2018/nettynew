@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-使用Promise解决回调地狱</title>
+    <script src="./lib/jquery.1.11.1.min.js"></script>
+</head>
+
+<body>
+    <script>
+        /**
+         * http://kumanxuan1.f3322.net:8809/index/banners/travel
+         * http://kumanxuan1.f3322.net:8809/strategies/themes
+         * http://kumanxuan1.f3322.net:8809/travels/query
+        */
+        // 使用Promise解决回调地狱
+        // 需求：发送完第1条ajax收到响应之后发送第二条ajax收到响应之后发送第三条ajax
+        let p1 = new Promise((resolve, reject) => {
+            // 发送第一个ajax请求
+            $.ajax({
+                url: "http://kumanxuan1.f3322.net:8809/index/banners/travel",
+                type: "GET",
+                data: {},
+                success(res) {
+                    resolve(111);
+                },
+                error(err) {
+                    reject(err);
+                }
+            });
+        });
+        let p2 = new Promise((resolve, reject) => {
+            $.ajax({
+                url: "http://kumanxuan1.f3322.net:8809/strategies/themes",
+                type: "GET",
+                data: {},
+                success(res1) {
+                    resolve(222);
+                },
+                error(err) {
+                    reject(err);
+                }
+            })
+        });
+
+        let p3 = new Promise((resolve, reject) => {
+            $.ajax({
+                url: "http://kumanxuan1.f3322.net:8809/travels/query",
+                type: "GET",
+                data: {},
+                success(res2) {
+                    resolve(333);
+                },
+                error(err) {
+                    reject(err);
+                }
+            });
+        });
+        p1.then((res) => {
+            console.log(res);
+            return p2;
+        }).then((res1) => {
+            console.log(res1);
+            return p3;
+        }).then((res2) => {
+            console.log(res2);
+        });
+
+    </script>
+</body>
+
+</html>

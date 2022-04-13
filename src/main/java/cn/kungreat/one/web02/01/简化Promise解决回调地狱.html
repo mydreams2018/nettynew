@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-使用Promise解决回调地狱</title>
+    <script src="./lib/jquery.1.11.1.min.js"></script>
+</head>
+
+<body>
+    <script>
+        /**
+         * http://kumanxuan1.f3322.net:8809/index/banners/travel
+         * http://kumanxuan1.f3322.net:8809/strategies/themes
+         * http://kumanxuan1.f3322.net:8809/travels/query
+        */
+
+        // 将函数进行封装
+        function getPromiseAjax(url) {
+            let p = new Promise((resolve, reject) => {
+                // 发送第一个ajax请求
+                $.ajax({
+                    url:url,
+                    success(res) {
+                        resolve(url);
+                    }
+                })
+            })
+            return p;
+        }
+        let p1 = getPromiseAjax("http://kumanxuan1.f3322.net:8809/index/banners/travel");
+        let p2 = getPromiseAjax("http://kumanxuan1.f3322.net:8809/strategies/themes");
+        let p3 = getPromiseAjax("http://kumanxuan1.f3322.net:8809/travels/query");
+        // //使用链式编程解决问题
+        p1.then((res) => {
+            console.log(res);
+            return p2;
+        }).then((res1) => {
+            console.log(res1);
+            return p3;
+        }).then((res2) => {
+            console.log(res2);
+        })
+
+    </script>
+</body>
+
+</html>

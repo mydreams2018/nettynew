@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-回调地狱</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <script>
+        // ajax请求
+        /**
+         * http://kumanxuan1.f3322.net:8809/index/banners/travel
+         * http://kumanxuan1.f3322.net:8809/strategies/themes
+         * http://kumanxuan1.f3322.net:8809/travels/query
+        */
+        /*
+            需求：发送完第1条ajax收到响应之后发送第二条ajax收到响应之后发送第三条ajax
+            回调地狱：弊端：不容易维护
+            原理：发送ajax请求时同步发送的，ajax的回调时异步的，也就是说  数据有多大，请求时间就有多长
+            导致响应时间长，输出不按顺序。
+            解决： 不使用Promise可以解决此问题吗？可以的
+        */
+        $.ajax({
+            url: "http://kumanxuan1.f3322.net:8809/index/banners/travel",
+            success(res) {
+                $.ajax({
+                    url: "http://kumanxuan1.f3322.net:8809/strategies/themes",
+                    success(res) {
+                        $.ajax({
+                            url: "http://kumanxuan1.f3322.net:8809/travels/query",
+                            success(res) {
+                                console.log(333); 
+                            }
+                        })
+                        console.log(222);
+                    }
+                })
+                console.log(111);
+            }
+        })
+
+    </script>
+</body>
+
+</html>

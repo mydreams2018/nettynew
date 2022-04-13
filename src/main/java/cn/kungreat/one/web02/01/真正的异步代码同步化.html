@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 真正的异步代码同步化
+        let p1 = new Promise(function (resolve, reject) {
+            setTimeout(() => {
+                resolve("111");
+            }, 3000)
+        })
+        let p2 = new Promise(function (resolve, reject) {
+            setTimeout(() => {
+                resolve("222");
+            }, 2000)
+        })
+        let p3 = new Promise(function (resolve, reject) {
+            setTimeout(() => {
+                resolve("333");
+            }, 1000)
+        })
+    /*     async 修饰的函数都是异步的  await  操作符用于等待一个Promise 对象。它只能在异步函数 async function 中使用。
+        */
+        async function getList() {
+            let res1 = await p1;
+            console.log(res1);
+            let res2 = await p2;
+            console.log(res2);
+            let res3 = await p3;
+            console.log(res3);
+            console.log("end");
+        }
+        getList();
+
+        //一创建就会执行fun
+        let p4 = new Promise(function (resolve, reject) {
+            setTimeout(() => {
+                resolve("4444");
+                console.log(444);
+            }, 1000);
+        });
+
+
+        function resolveAfter2Seconds(x) {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve(x);
+                }, 2000);
+            });
+        }
+
+        async function f1() {
+            var x = await resolveAfter2Seconds(10);
+            console.log(x); // 10
+        }
+        f1();
+
+        async function f3() {
+            try {
+                var z = await Promise.reject(30);
+            } catch (e) {
+                console.log(e);//30
+            }
+        }
+        f3();
+
+    </script>
+</body>
+
+</html>

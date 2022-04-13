@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-Promise的语法</title>
+</head>
+
+<body>
+    <script>
+        // Promise是内置的对象   需要使用new关键字进行修饰(实例化)
+        /*
+        使用Promise解决异步的代码同步执行
+        Promise接收一个函数的参数 参数有两个  resolve,reject
+        resolve()解决(此方法是为了处理成功的回调)
+        reject()拒绝(此方法为了处理失败的回调)
+        特点：状态一旦发生改变就会凝固，状态不会再受任何影响
+        */
+        let p = new Promise(function (resolve, reject) {
+            // resolve("OK");//解决(此方法是为了处理成功的回调)
+            reject("no");//拒绝(此方法为了处理失败的回调)
+        });
+
+        //     状态1：pending(初始状态/默认状态)等待,resolve();被调用状态由pending改为fulfilled表示成功
+        //     状态2：pending(初始状态/默认状态)等待,reject();被调用状态由pending改为rejected表示失败
+        // */
+        p.then((res) => {
+            console.log(res);
+        }).catch((err) => {
+            console.log("error:"+err);
+        })
+
+    </script>
+</body>
+
+</html>

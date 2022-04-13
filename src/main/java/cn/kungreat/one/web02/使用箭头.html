@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+
+        var obj = {
+            fun:function () {
+                console.log(this); //obj
+                window.setTimeout(function () {
+                    console.log(this); //window
+                },1000);
+            },
+            fun1:function () {
+                console.log(this); //obj
+                window.setTimeout(function (ts) {
+                    console.log(ts); //obj 传参过来解决
+                },1000,this);
+            },
+            fun2:function () {
+                console.log(this); //obj
+                window.setTimeout(()=> {
+                    console.log(this); //obj  ()=>
+                },1000);
+            }
+        }
+
+        obj.fun();
+        obj.fun1();
+        obj.fun2();
+
+        var arr = [1,2,3,5,6,8,9];
+        arr.forEach(intem => console.log(intem));
+    </script>
+</body>
+</html>

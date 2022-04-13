@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11-Promise的方法的使用</title>
+</head>
+
+<body>
+    <script>
+        //Promise的方法all的使用
+        let p1 = new Promise(function (resolve, reject) {
+            setTimeout(() => {
+                resolve("111");
+            }, 3000)
+        })
+        let p2 = new Promise(function (resolve, reject) {
+            setTimeout(() => {
+                reject("222");
+            }, 2000)
+        })
+        let p3 = new Promise(function (resolve, reject) {
+            setTimeout(() => {
+                resolve("333");
+            }, 1000)
+        })
+        // //all方法指的是：所有的Promise都执行resolve方法  打包返回(数组形式)
+        // //假如有异常抛出，会返回异常，假如有多个异常，会返回最快的那一个
+        Promise.all([p1, p2, p3]).then((res) => {
+            console.log(res);
+        }).catch((err) => {
+            console.log(err);
+        });
+        //Promise的方法race的使用
+        //race方法指的是：无论是resolve还是reject  谁快返回谁
+        Promise.race([p1, p2, p3]).then((res) => {
+            console.log(res);
+        }).catch((err) => {
+            console.log(err);
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            1:无参无返回值的箭头函数,特点：{只有一行代码}可以省略不写
+            2:无参有返回值的箭头函数,特点：{只有一行return代码} 可以省略{}和return 不写
+            3:有参无返回值的箭头函数,特点：()只有一个参数可以省略()不写
+            4:多参多行代码的箭头函数,不能省略(简写)
+            5:创建一个返回值是一个对象的箭头函数{a:x,b:y} 不能简写(省略)
+            6:箭头函数不可以使用arguments,可以使用rest参数
+        */
+        let fn1_1 = () => {console.log("fn1");}
+        // 1:无参无返回值的箭头函数,特点：{只有一行代码}可以省略不写
+        let fn1_2 = () => console.log("fn1");
+        fn1_2();
+        let fn2_1 = () => {return "fn2";};//简写之前的写法
+        // 2:无参有返回值的箭头函数,特点：{只有一行return代码} 可以省略{}和return 不写
+        let fn2_2 = () => "fn2";
+        console.log(fn2_2());
+        let fn3_1 = (a) => {console.log(a);}//简写之前的写法
+        // 3:有参无返回值的箭头函数,特点：()只有一个参数可以省略()不写
+        let fn3_2 = a => console.log(a);
+        fn3_2("fn3");
+        // 4:多参多行代码的箭头函数,不能省略(简写)
+        let fn4 = (a, b) => {
+            let sum = a + b;
+            return sum;
+        }
+        console.log(fn4(1, 3));
+        // 5:创建一个返回值是一个对象的箭头函数{a:x,b:y} 不能简写(省略)
+        // 原因：对象本身是有{}函数也有{}此时  函数会认为这个{}是函数的  对象会认为这个{}是对象本身的
+        let fn5 = (x, y) => {
+            return { a: x, b: y };
+        }
+        console.log(fn5(2, 3));
+
+        // 可变参数
+        let fn6 = (...rest) => {
+            console.log(rest);
+        }
+        fn6(3, 3);
+    </script>
+</body>
+
+</html>

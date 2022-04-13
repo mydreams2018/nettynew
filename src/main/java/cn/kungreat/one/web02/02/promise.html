@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <script>
+        // Promise 对象用于表示一个异步操作的最终完成 (或失败)及其结果值。
+        console.log(Promise);
+        console.log($);
+
+        const myPromise = new Promise(function (resolve, reject) {
+                resolve("ok");
+                // reject("error");
+        });
+        // Promise 不论成功或失败都会调用 then
+        // catch() 只有当 promise 失败时才会调用
+        //then  成功的时候  catch 失败的时候
+        myPromise.then((resolve, reject) => {
+            console.log(resolve);
+        }).catch((reason) => {
+            console.log('处理失败的  ('+reason+')');
+        });
+
+    </script>
+</body>
+</html>

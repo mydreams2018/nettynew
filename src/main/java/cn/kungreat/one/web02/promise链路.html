@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <script>
+        // Promise 对象用于表示一个异步操作的最终完成 (或失败)及其结果值。
+        console.log(Promise);
+
+        //job1.then(job2).then(job3).catch(handleError);
+
+        // 0.5秒后返回input*input的计算结果:
+        function multiply(input) {
+            return new Promise(function (resolve, reject) {
+                console.log('calculating ' + input + ' x ' + input + '...');
+                setTimeout(resolve, 500, input * input);
+            });
+        }
+
+        // 0.5秒后返回input+input的计算结果:
+        function add(input) {
+            return new Promise(function (resolve, reject) {
+                console.log('calculating ' + input + ' + ' + input);
+                setTimeout(resolve, 500, input + input);
+            });
+        }
+
+        var p = new Promise(function (resolve, reject) {
+            console.log('start new Promise...');
+            resolve(50);
+        });
+        p.then(multiply)
+            .then(add)
+            .then(multiply)
+            .then(add)
+            .then(function (result) {
+                console.log('Got value:' + result);
+            }).catch((reject) => {
+                console.log('处理失败的:'+reject);
+            });
+
+    </script>
+</body>
+</html>
