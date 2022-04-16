@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 意思是new在实例化对象的时候就默默指好了构造函数的原型对象，然后实例对象又通过__proto__获取原型对象
+        function Person(name) {
+            this.name = name;
+            this.eat = function () {
+                console.log('在吃饭');
+            }
+            // 4 不需要手动的return this
+        }
+
+        // 原型对象
+        Person.prototype.say = function () {
+            console.log('hello world');
+        }
+
+        let p1 = new Person('张三');
+        console.log(p1);
+    </script>
+</body>
+
+</html>

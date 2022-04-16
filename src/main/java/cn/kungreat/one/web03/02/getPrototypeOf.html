@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function Car(make, model, year) {
+            this.make = make;
+            this.model = model;
+            this.year = year;
+        }
+        //new 创建对象概念
+        const auto = new Car('Honda', 'Accord', 1998);
+        //不用new  就相当以前的 function 调用
+        Car('Honda', 'Accord', 1998);
+        Car.prototype.llll="护展";
+        Car.prototype.rrrr=function () {
+            console.log("护展")
+        };
+        console.log("Car:",auto);
+
+        console.log(Object.getPrototypeOf(auto));
+        console.log(Car.prototype);
+
+        console.log(Car.prototype == Object.getPrototypeOf(auto));//true
+
+        function Tree(name) {
+            this.name = name;
+        }
+
+        let theTree = new Tree('Redwood');
+        console.log('theTree.constructor is ' + theTree.constructor);
+        console.log('theTree.prototype is ' + theTree.prototype);//undefined
+
+        Tree.prototype.fku="dfsdfsdf";
+        console.log(theTree);
+    </script>
+</body>
+</html>

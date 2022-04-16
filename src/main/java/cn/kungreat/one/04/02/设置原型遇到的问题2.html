@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 先实例化，再重写原型对象
+        function Person(name) {
+            this.name = name;
+        }
+
+        // Person.prototype 对象 往对象上面去添加一个say和一个eat方法 ，没有改变Person.prototype的地址
+        Person.prototype.say = function () {
+            console.log('hello world');
+        }
+        Person.prototype.eat = function () {
+            console.log('我在吃饭');
+        }
+
+        let p1 = new Person('张三'); //实例化
+
+        // 完全重写了Person.prototype这个对象的地址
+        Person.prototype.eee = {
+            say: function () {
+                console.log('hello world');
+            }
+        }
+
+        console.log(p1);
+        console.log(p1.__proto__ === Person.prototype) // true
+        console.log(Person.prototype);
+    </script>
+</body>
+
+</html>

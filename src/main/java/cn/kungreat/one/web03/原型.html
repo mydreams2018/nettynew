@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function Dog(name) {
+            this.name = name;
+        }
+
+        const dog1 = new Dog('Gabby');
+        const dog2 = new Dog('阿来');
+
+        Dog.prototype.say = function dogToString() {
+            console.log(this);//谁调的就是谁的
+            return "dfsdfs";
+        };
+
+        console.log(dog1.say === dog2.say);
+        dog1.say();
+        dog2.say();
+
+
+        Dog.staticSay = function () {
+            console.log(this);
+           /* Dog(name) {
+                this.name = name;
+            }*/
+        }
+        Dog.staticSay();
+    </script>
+</body>
+</html>

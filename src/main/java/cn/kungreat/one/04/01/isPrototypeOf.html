@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        /*
+        *  对象.__proto__ === 类型.prototype
+        *
+        */
+        function Foo() {}
+        function Bar() {}
+        function Baz() {}
+        Bar.prototype = Object.create(Foo.prototype);
+        Baz.prototype = Object.create(Bar.prototype);
+        var baz = new Baz();
+        console.log(Baz.prototype.isPrototypeOf(baz)); // true
+        console.log(Bar.prototype.isPrototypeOf(baz)); // true
+        console.log(Foo.prototype.isPrototypeOf(baz)); // true
+        console.log(Object.prototype.isPrototypeOf(baz)); // true
+        console.log(baz);
+
+        function Person() {
+
+        }
+        // instanceof 运算符用于检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上。
+        var ps = new Person();
+        console.log(Person.prototype.isPrototypeOf(ps));//true
+        console.log(Object.prototype.isPrototypeOf(ps));//true
+
+        console.log(ps instanceof Person)//true
+        console.log(ps instanceof Object)//true
+
+
+    </script>
+</body>
+</html>

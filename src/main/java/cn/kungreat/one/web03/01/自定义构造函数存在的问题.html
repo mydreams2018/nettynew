@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 面向对象编程 为了减少变量 
+        function Person(name) {
+            this.name = name;
+            this.say = say;
+        }
+
+        // 创建了一个新的全局变量say
+        function say() {
+            console.log('hello');
+        }
+
+        let p1 = new Person('张三');
+        let p2 = new Person('李四');
+        p1.say();
+        p2.say();
+        console.log(p1.say === p2.say); // true
+        window.say();
+
+    </script>
+</body>
+
+</html>

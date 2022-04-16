@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Person(name) {
+            this.name = name
+        }
+
+        // 先实例化，再重写原型对象
+        let p1 = new Person('张三');
+
+        // 等于重写了原型对象的地址
+        Person.prototype = {
+            say: function () {
+                console.log('hello world')
+                // return 1
+            },
+            eat: function () {
+                console.log('eat')
+            }
+        }
+
+        console.log(p1);
+        // p1.say()
+        console.log(Person.prototype)
+        console.log(p1.__proto__)
+        console.log(Person.prototype.say());
+        Person.prototype.say();
+    </script>
+</body>
+
+</html>

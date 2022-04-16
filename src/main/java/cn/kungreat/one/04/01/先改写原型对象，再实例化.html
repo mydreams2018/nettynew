@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Person(name) {
+            this.name = name;
+        }
+
+        let p1 = new Person('张三');
+
+        console.log(p1);
+
+        // 新的对象可不可以也看成是一个实例对象呢
+        console.log(p1.__proto__);
+        console.log(Person.prototype === p1.__proto__) // true
+        console.log(p1.__proto__.constructor);
+        console.log(p1.__proto__.__proto__ === Object.prototype) // true
+        // 原型链的访问规则  1.一级一级的往上找，直到找到为止  2就近原则
+    </script>
+</body>
+
+</html>

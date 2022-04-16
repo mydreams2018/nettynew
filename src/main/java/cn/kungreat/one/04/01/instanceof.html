@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.say = function () {
+            console.log(this.name);
+        }
+
+        let p1 = new Person('jojo', 5);
+        p1.say();
+
+        // Person.prototype会不会是别人的实例对象呢？
+        // console.log(Person.prototype)
+
+        // isPrototypeOf 用来判断某个对象是否是指定对象的原型对象
+        // A.isPrototypeOf(b) 判断的是A这个对象是否存在于b这个对象的原型链上
+        console.log(Person.prototype.isPrototypeOf(p1)) // Person.prototype在p1的原型链上
+        console.log(Object.prototype.isPrototypeOf(p1)) // Object.prototype在p1的原型链上
+
+        console.log(Object.prototype.isPrototypeOf(Person.prototype)) // Object.prototype在Person.prototype的原型链上
+
+        // instanceof 判断某个对象是否是指定类的一个类型。
+        // a instanceof b ： 用来判断b.prototype是不是存在于a的原型链之中
+        console.log(p1 instanceof Person); // true 用来判断Person.prototype是不是存在于p1的原型链之中
+        console.log(p1 instanceof Object);//true
+        console.log(Person.prototype instanceof Object); // true 用来判断Object.prototype是不是存在于Person.prototype的原型链之中
+
+        console.log(p1);
+    </script>
+</body>
+
+</html>

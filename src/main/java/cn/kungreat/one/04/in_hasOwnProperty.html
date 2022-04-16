@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // in关键字 用来检查对象中是否存在某个指定的`实例属性`或者是`原型属性`。它不区分对象属性是否可枚举
+        function Person(name, age) {
+            this.name = name
+            this.age = age
+        }
+        Person.prototype = {
+            say: function () {
+                console.log('hello world');
+            }
+        }
+
+        let p1 = new Person('张三', 20);
+        console.log(p1)
+        console.log('name' in p1) // true。 实例成员
+        console.log('constructor' in p1) // true。 原型成员
+        console.log('__proto__' in p1) // true。 __proto__不可枚举,但是in关键字不区分是否可枚举
+
+        // has Own自己的 Property属性  hasOwnProperty
+        // 用来检查对象中是否存在某个指定的`实例属性`
+        // 对象.hasOwnProperty(属性名)
+        console.log(p1.hasOwnProperty('name')) // true 实例属性
+        console.log(p1.hasOwnProperty('constructor')) // false 原型属性
+
+        // 需求：检查对象中是否存在某个指定的原型属性
+        for (let k in p1) {
+            // k in p1可以省略
+            if (!p1.hasOwnProperty(k)) {
+                console.log(k) // constructor say
+            }
+        }
+    </script>
+</body>
+
+</html>

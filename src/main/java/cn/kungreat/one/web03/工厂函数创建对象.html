@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+         // 面向过程
+        var a = 1;
+        function f() {
+
+        }
+        f()
+        var b = 2;
+
+        // 面向对象
+        var obj = {
+            a: 1,
+            b: 2,
+            fn: function () {
+
+            }
+        }
+
+
+        // 1.用字面量创建对象 缺点：代码重复
+        let obj2 = {
+            name: '张三'
+        }
+
+        // 2 new Object 缺点：代码重复
+        let person = new Object() // 实例化一个新的对象
+        console.log(person) // {}
+        person.name = '张三';
+        person.age = 20;
+        console.log(person);
+
+        let person2 = new Object() // 实例化一个新的对象
+        console.log(person2) // {}
+        person2.name = '张三'
+        person2.age = 20;
+        console.log(person2);
+
+        // 工厂函数 缺点是什么：你分不清你的对象他是什么类型的
+        function createPerson(name, age) {
+            let person = new Object(); // {}
+            person.name = name;
+            person.age = age;
+            return person; // 函数如果没有显式的return,那么默认返回一个undefined
+        }
+        let person3 = createPerson('张三', 20);
+        let person5 = createPerson('李四', 25);
+        console.log(person3);
+        console.log(person5);
+
+        function createDog(name, age) {
+            let dog = new Object() // {}
+            dog.name = name
+            dog.age = age
+            return dog // 函数如果没有显式的return,那么默认返回一个undefined
+        }
+        let dog1 = createPerson('旺财', 5)
+        console.log(dog1)
+
+        console.log(obj.fn);  // 可以通过.方法来调用
+        obj.fn();
+
+    </script>
+</body>
+
+</html>

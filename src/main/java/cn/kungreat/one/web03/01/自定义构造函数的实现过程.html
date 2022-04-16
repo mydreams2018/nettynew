@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1首字母要大写
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        let p1 = new Person('张三', 20);
+        console.log(p1);
+
+        // 这个时候，没 new 创建对象，就相当调用普通 function
+        let p2 = Person('张三', 20);
+        console.log(p2); // undefined
+        console.log(window);
+
+        // name和age属性会跑到window上面去，变成了window的属性
+        // 构造函数里面的this指向的是实例对象本身
+    </script>
+</body>
+
+</html>

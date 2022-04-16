@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Person(name) {
+            this.name = name;
+        }
+        // 先重写原型对象，再实例化
+        Person.prototype = {
+            constructor: Person, // 目的：让原型对象的constructor不指向Object,而指向Person
+            say: function () {
+                console.log('hello world')
+            }
+        }
+        let p1 = new Person('张三')
+        // console.log(p1)
+        // p1.say()
+        // p1身上没有constructor属性，是通过原型链获取到他的原型对象上面的constructor属性，供它自己使用
+        // console.log(p1.constructor === Person) // false
+
+        // 新的对象可不可以也看成是一个实例对象呢
+        console.log(Object.prototype === p1.__proto__.__proto__) // true
+        console.log(p1.constructor === Object) // true
+        console.log(p1.constructor === Person) // false
+        console.log(p1.__proto__.constructor)
+        console.log(p1.__proto__.__proto__ === Object.prototype) // true
+        // 原型链的访问规则  1.一级一级的往上找，直到找到为止  2就近原则
+        console.log(p1.constructor)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+       function Dog(name,age){
+           this.name = name;
+           this.age=age;
+       }
+       function Person(name,age){
+           this.name = name;
+           this.age=age;
+       }
+       Person.prototype.say=function () {
+           console.log(1111);
+       }
+       var ts = new Dog("阿杰",32);
+       ts.__proto__ = Person.prototype;
+       var ts2 = new Dog("阿杰2",22);
+       console.log(ts);
+       console.log(ts2);
+    </script>
+</body>
+</html>

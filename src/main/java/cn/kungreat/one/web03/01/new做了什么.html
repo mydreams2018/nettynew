@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Person(name, age) {
+            // 下面这些代码都是伪代码
+            // new帮我们做了什么事
+            // 1.他帮我们默认创建了一个空对象 let obj = new Object()
+            // 2.this = obj 重点，this才能变成一个空对象
+            this.name = name // 3 通过this来添加属性和方法
+            this.age = age
+            this.say = function () {
+                console.log('hello')
+            }
+            // 4 return this
+        }
+        let p1 = new Person('张三', 20);
+    </script>
+</body>
+
+</html>

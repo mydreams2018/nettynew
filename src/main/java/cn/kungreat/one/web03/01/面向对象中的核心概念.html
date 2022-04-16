@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Person 构造函数
+        function Person(name) {
+            this.name = name;
+        }
+        // Person.prototype 原型对象
+        Person.prototype.say = function () {
+            console.log('hello world');
+        }
+
+        // 实例对象，new对象这个过程叫做实例化
+        let p1 = new Person('张三');
+        let p2 = new Person('李四');
+        // 关于p1的实例成员 name
+        // 关于p1的原型成员 say
+
+        // 静态成员,只能由构造函数自己来访问
+        Person.a = 1;
+        console.log(Person.a);//1
+        console.log(p1.a);//undefined
+    </script>
+</body>
+
+</html>

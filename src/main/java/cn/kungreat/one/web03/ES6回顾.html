@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.let const var
+        // let const 块级作用域
+        // es5 两种作用域 全局作用域 函数作用域
+        // if (true) {
+        //     // let a = 1
+        //     var a = 1
+        // }
+        // console.log(a)
+
+        // 2. let 声明的变量不会提升
+        // console.log(a)
+        // // let a = 1
+        // var a = 1
+
+        // var a
+        // console.log(a)
+        // a = 1
+
+        // 3 const
+        // const a = 1
+        // a = 2
+        // const obj = {
+        //     name: '张三'
+        // }
+        // obj = null
+
+        // const arr = []
+        // // arr.push(1)
+        // arr = [1]
+
+        // 4 模板字符串
+        // let name = '张三'
+        // let str = `hello ${name}`
+        // console.log(str)
+
+        // 5 解构
+        // let [a, c, b] = [1, 2, 3]
+        // console.log(a, b, c)
+
+        // // n
+        // let { age, name: n } = {
+        //     name: '张三',
+        //     age: 20
+        // }
+        // // let n = name
+        // console.log(n, age)
+
+        // 6 对象的简写
+        // let name = '张三'
+        // let age = 20
+        // let obj = {
+        //     name,
+        //     age
+        // }
+        // console.log(obj)
+
+        // 7 函数参数默认值
+        // function f(a = 1, b = 2) {
+        //     console.log(a + b)
+        // }
+        // f()
+
+        // let { a = 3, b } = undefined // 只有当匹配的值是undefined的时候，才会用默认值
+        // console.log(a, b)
+
+        // function f({ a = 1, b = 1 } = {}) { // ={} 是函数的默认值 兜底  a = 1, b = 1 是对象解构自己的默认值
+        //     console.log(a + b)
+        // }
+        // f()
+
+        // 8 rest参数 剩余参数
+        // function f() {
+        //     console.log(arguments)
+        // }
+        // f(1, 2, 3)
+
+        // function f(...rest) {
+        //     console.log(rest) // 数组
+        // }
+        // f(1, 2, 3)
+
+
+        // 9 扩展运算符
+        // let arr1 = [1, 2, 3]
+        // let arr2 = [4, 5, 6]
+        // // arr1.concat(arr2)
+        // let newArr = [...arr1, ...arr2]
+        // console.log(newArr)
+
+        // let obj1 = { name: '张三' }
+        // let obj2 = { age: 20 }
+        // // let newObj = { ...obj1, ...obj2 }
+        // var newObj = Object.assign({}, obj1, obj2) // es5
+        // console.log(newObj)
+
+        // 10 箭头函数 this指向
+        // window.name = '红茶'
+        // let obj = {
+        //     name: '奶茶',
+        //     fn: function () {
+        //         console.log(this.name)
+        //     }
+        // }
+        // obj.fn()
+
+        // let obj2 = {
+        //     name: '绿茶',
+        //     fn: () => {
+        //         console.log(this.name)
+        //     }
+        // }
+        // obj2.fn()
+
+        // 11 Promise Promise它本身是同步的，.then .catch里面的回调他才是异步的
+        // Promise.all Promise.race
+        // let a = 2
+        // let p = new Promise((resolve, reject) => {
+        //     if (a > 1) {
+        //         resolve(a)
+        //     } else {
+        //         reject('失败')
+        //     }
+        // })
+        // p.then(res => {
+        //     console.log(res)
+        // }).catch(err => {
+        //     console.log(err)
+        // })
+
+        // all 全部成功才算成功，一个失败就是失败
+        // let p1 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         reject('p1')
+        //     }, 1000)
+        // })
+        // let p2 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         resolve('p2')
+        //     }, 3000)
+        // })
+        // let result = Promise.all([p1, p2]).then(res => {
+        //     console.log(res)
+        // }).catch(err => {
+        //     console.log(err)
+        // })
+
+        // race 一个成功就算成功
+        let p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                reject('p1');
+            }, 1000)
+        })
+        let p2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('p2');
+            }, 3000)
+        })
+        let result = Promise.race([p1, p2]).then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.log(err);
+        })
+
+        // async await
+        const p5 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(1);
+            }, 3000);
+        });
+        async function f() {
+            const res = await p5;
+            console.log(res);
+        }
+        f();
+    </script>
+</body>
+
+</html>

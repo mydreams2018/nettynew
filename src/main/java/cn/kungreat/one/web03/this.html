@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+
+        var a= 55;  // 等于  window.a=55
+        console.log(window);
+        function fn1() {
+            console.log(this.a);//55
+        }
+        fn1();
+
+        let b = 55;
+        function fn2() {
+            console.log(this.b);//undefined   当前this是window 而用let b 是没有在window 里面的
+        }
+        fn2();
+
+    </script>
+</body>
+</html>

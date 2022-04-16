@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="ul">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        /* // 全局作用域 函数作用域 es5
+        // 块作用域 es6
+
+        // 全局作用域
+        var a = 1
+
+        function f() {
+            // 函数作用域
+        }
+
+        if (true) {
+            // 块作用域
+            let b = 1
+        } */
+
+        // 1.全局使用,this指向的是window
+        var a = 1; // window.a = 1;
+        function f() {
+            // 在函数里面，函数的拥有者默认绑定到this上
+            console.log(this.a);
+        }
+        f();
+
+        let b = 1;
+        function f1() {
+            // 在函数里面，函数的拥有者默认绑定到this上
+            console.log(this.b); //返回 undefined
+        }
+        f1()
+
+
+
+
+        // 2 对象里面方法的this,
+        var name = '李四';
+        let obj = {
+            name: '张三',
+            say: function () {
+                // 对象里面函数的作用域是局部的，属于调用当前函数的对象，所以this指向的是调用当前函数的对象
+                console.log(this.name);//张三
+            }
+        }
+        obj.say();
+
+
+        // 4 箭头函数的this
+
+        let obj2 = {
+            name: '张三',
+            say: () => {
+                // 箭头函数里面没有作用域，它的this指向的是外层作用域
+                console.log(this.name)//李四
+            }
+        }
+        obj2.say();
+
+        // 5 构造函数中的this 
+        // 每创建一个新的实例对象，构造函数里面的this都会指向新的实例对象
+
+        function Person(name) {
+            this.name = name;
+            this.say = function () {
+                console.log(this); // this会等到方法调用的时候，才指向当前的对象
+            }
+        }
+        const p1 = new Person('张三'); // 创建对象
+        const p2 = new Person('李四'); // 创建对象
+        p1.say();
+        p2.say();
+    </script>
+</body>
+
+</html>

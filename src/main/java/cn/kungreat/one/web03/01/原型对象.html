@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 面向对象编程 为了减少变量 
+        function Person(name) {
+            this.name = name;
+        }
+        Person.prototype.say = function () {
+            console.log('hello');
+        }
+        let p1 = new Person('张三');
+        let p2 = new Person('李四');
+
+        // 原型对象 每一个构造函数身上都有一个与之相关联的一个对象，这个对象称之为`原型对象`
+        // 作用 每个构造函数创建出来的对象都能够用（共享）其原型对象上的属性和方法，从而减少内存分配
+
+        // 怎么获取到构造函数身上的原型对象
+        // 语法：构造函数.prototype = 这个构造函数的原型对象，在这个对象身上来添加属性和方法
+        p1.say();
+        p2.say();
+        console.log(p1.say === p2.say) // true
+    </script>
+</body>
+
+</html>

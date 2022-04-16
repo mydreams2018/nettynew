@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Person 构造器，创建出一类事物，它要配合new
+        function Person(name) {
+            this.name = name;
+        }
+        // 对象
+        let person1 = new Person('张三');
+        console.log(person1);
+
+        // 怎么分类
+        //1 con s tru c tor   constructor 使用constructor属性来获取对象使用的构造器函数
+        // 语法：对象.constructor
+        console.log(person1.constructor);
+        console.log(person1.constructor === Person); // true
+
+        // 2 instanceof  instance实例 instanceof不是一个方法，他是一个关键字
+        // 语法：对象 instanceof 构造器 如果这个对象的类型是这个构造器，那么返回true,否则返回false
+        console.log(person1 instanceof Person) // true 判断person1这个对象的类型是不是Person这个类
+    </script>
+</body>
+
+</html>

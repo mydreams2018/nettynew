@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 自定义构造函数 解决工厂函数没办法区分类的一个问题
+        // new Promise  new Object new Array 内置构造函数
+
+        // 1.构造函数的首字母一般大写，约定俗成，语法规范   使用时 [有new 就当构造函数用|没new  就是普通 function]
+        function Person(name, age) {
+            // 2 不需要创建对象，会自动创建
+            this.name = name;
+            this.age = age;
+            return this;
+            // 不写会默认返回  return的是基本数据类型，那么忽视掉该return值，如果返回的是一个引用类型，那么返回该引用类型
+        }
+
+        // 使用
+        let person1 = new Person('张三', 20);
+        let person2 = new Person('李四', 25);
+        console.log(person1);
+        console.log(person2);
+
+        function Dog(name, age) {
+            this.name = name
+            this.age = age
+        }
+        let dog1 = new Dog('旺财', 5);
+        console.log(dog1);
+
+        function func() {
+            // 没有return
+        }
+        console.log(func()) // undefined
+
+        console.log(Person("dfsdf", 121));//window   没有使用new  就是普通function
+
+        console.log(new Person("dfsdf", 121)); //Person  使用new
+    </script>
+</body>
+
+</html>

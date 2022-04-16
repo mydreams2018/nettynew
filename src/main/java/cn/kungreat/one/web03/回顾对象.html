@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 字面量方式创建一个对象，{}，键值对，由属性和方法组成，方法都是匿名函数
+        // 缺点：当创建大量对象的时候，也会出现代码重复，只适合创建单个对象
+        // 优点是：方便直观
+        let obj2 = {
+            age: 20, // 属性
+            name: '张三',
+            fn: function () { // 方法
+                console.log('hello world');
+            }
+        }
+
+        // 类 对象
+        // 类可以帮助我们把事物给分门别类 对象是一个具体的事物
+        // 类      对象
+        // 饮料     加多宝，王老吉
+        // 班主任   我们班的班主任
+
+        // 成员 ： 属性和方法
+        // {
+        //     属性：变量，
+        //     方法：匿名函数
+        // }
+
+        let k = 'age';
+        let person = {
+            name: '张三',
+            age: 20,
+            say: function () {
+                console.log('hello world');
+            }
+        }
+        // 访问对象的属性 //1 对象.属性 //2 对象[属性]
+        // console.log(person.name)
+        // console.log(person['age']) // 这种情况下会用
+        // console.log(person[k]) => console.log(person['age'])
+        // 调用对象的方法
+        // person.say()
+
+        // 对象属性的修改 语法和添加对象属性是一样的
+        person.age = 21
+        person.gender = '男'
+        console.log(person)
+
+        // 删除 // 1.delete // 2.属性名 = null 一个更优的方法
+        // delete person.gender
+        person.gender = null;
+        console.log(person)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        const person = {
+            isHuman: false,
+            printIntroduction: function(){
+                console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);
+            }
+        };
+
+        // Object.create()方法创建一个新对象，使用现有的对象来提供新创建的对象的 __proto__ 请打开浏览器控制台以查看运行结果
+        const me = Object.create(person);
+        me.name = 'Matthew'; // "name" is a property set on "me", but not on "person"
+        me.isHuman = true; // inherited properties can be overwritten
+        me.printIntroduction();
+        // expected output: "My name is Matthew. Am I human? true"
+
+    </script>
+</body>
+</html>
