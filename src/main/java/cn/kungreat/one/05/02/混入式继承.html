@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //混入式继承（拷贝继承）
+        //obj2继承到obj1中的成员，可以直接将obj1中的成员拷贝到obj2中即可
+        var obj1 = {
+            name:"zs",
+            age:10,
+            other:{
+                kun:"dfsdfsd"
+            }};
+        var obj2 = {};
+        // 将obj1中的成员拷贝到obj2中
+        for (var key in obj1){
+            obj2[key] = obj1[key];
+        }
+        //这里它识别为引用类型
+        obj2.other.kun="引用类型";
+        //这里它识别为基本类型
+        obj2.age=55;
+
+        console.log(obj1);
+        console.log(obj2);
+    </script>
+</body>
+</html>

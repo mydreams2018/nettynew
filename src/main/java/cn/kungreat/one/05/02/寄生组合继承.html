@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 扩展
+        // 组合继承的实现原理：通过原型链继承 + 借用构造函数继承
+        // 缺点：实例对象的原型链中有冗余（多余）的属性
+
+        // 父类
+        function Person(name, age){
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.say = function () {
+            console.log(`我的名字叫${this.name}`)
+        }
+
+        // 子类
+        function Student(name, age, score) {
+            // this.name = name
+            // this.age = age
+            // 借用构造函数继承父类的实例属性
+            Person.call(this, name, age);
+            // 子类自己的实例属性
+            this.score = score;
+        }
+
+        // 原型链继承父类的原型方法
+        // Student.prototype = new Person() // 原型链继承，造成了冗余的属性（name,age）。为什么？：看图。是因为Student.prototype是由Person实例化出来的，因此上面自然拥有了Person的实例成员，s1也就通过了原型链共享了这些实例成员（name,age） 
+
+        // 定义一个Super构造函数，里面是没有实例属性的
+        function Super() {
+        }
+
+        // 要先更改原型，再实例化
+        Super.prototype = Person.prototype // 关键是这一步，Student.prototype是由Super实例化出来的，而不再是由Person实例化出来，因此Student.prototype上没有Person的实例成员了，而由于Super本身没有实例成员，因此Student上面不再有Person的实例成员，也就没有了冗余属性。怎么验证？：在Super里面添加一个实例属性，可以看到，Student又可以在原型链上找到Super上的实例成员了。作用：维护原型链关系
+        Student.prototype = new Super(); // Super实例化出Student.prototype，作用是，Student.prototype不会再通过原型链拿到哪些冗余的属性了，因为Super它里面没有实例属性
+
+        Student.prototype.constructor = Student // constructor指回Student，不然会指向Person。这样子，s1的constructor就是指向符合常理的Student，如果指向了Person，那么其实就失去了用构造函数的一个最初的意义。
+        Student.prototype.getScore = function () {
+            console.log(`${this.name}的分数是${this.score}`)
+        }
+        let s1 = new Student('jojo', 5, 90);
+        console.log(s1);
+        s1.say()
+        s1.getScore()
+    </script>
+</body>
+
+</html>

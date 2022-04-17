@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+ /*       - Animal（父类）---->Person（子类）
+        - Person（父类）---->Student（子类）
+        - 使用Student创建实例对象，并且调用Animal类的原型方法
+ */
+        function Animal(name,age) {
+            this.name=name;
+            this.age=age;
+        }
+        Animal.prototype.what=function () {
+            console.log("并且调用Animal类的原型方法");
+        }
+        function Person(address){
+            Animal.call(this,"王二狗",20);
+            this.address=address;
+        }
+        function Student(address) {
+            Person.call(this,address);
+        }
+        Student.prototype=Animal.prototype;
+        var stu = new Student("dddd");
+        console.log(stu);
+        stu.what();
+    </script>
+</body>
+</html>

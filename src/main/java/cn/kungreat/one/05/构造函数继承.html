@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        function Student(name, age, score) {
+            //包含关系
+            this.base = new Person(name,age);
+            this.score = score;
+        }
+       var stu =new  Student("ddd",21,90);
+        console.log(stu);
+    </script>
+</body>
+</html>

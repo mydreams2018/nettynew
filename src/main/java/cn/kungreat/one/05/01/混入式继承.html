@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 继承的目的：通过相应的代码将父类中的成员复制到子类对象中
+        // 混入式继承
+        // 实现原理：将父类的成员拷贝到子对象中 浅拷贝
+        // 实现方式：for in 来循环遍历父类 ，子[key] = 父[key]
+        // 缺点：共享数据的安全问题，修改一个对象，可能会影响到另外一个对象
+
+        let obj = {
+            name: 'jojo',
+            other: {
+                age: 5
+            }
+        }
+
+        let obj2 = {}
+
+        for (let k in obj) {
+            obj2[k] = obj[k] // obj2因为没有这些k的键，所以它是新增了这些键
+        }
+
+        // 在console.log执行前更改属性的情况
+        obj.name = 'rose'
+        // obj.other.age = 10
+        // obj.other = { age: 10 } 这种情况obj.other指向了一个新地址，没有和obj2.other共用一个地址了
+
+        console.log('obj:')
+        console.log(obj)
+        console.log('obj2:')
+        console.log(obj2) // obj2.name jojo   obj2.name 是一个基础类型的值，它不会跟着obj.name 的改变而改变
+        // obj2.other.age   obj2.other它是引用类型的值，obj2.other和obj.other共用了一个地址
+    </script>
+</body>
+
+</html>

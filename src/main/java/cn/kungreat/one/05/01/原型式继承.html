@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 我们继承目的：子类要来继承父类 原型对象 实例属性
+        // 原型式继承
+        // 原理：子类的原型对象指向父类的原型对象
+        // 实现方式：子类.prototype = 父类.prototype 让子类的原型对象指向父类的原型对象
+        // 弊端：1.造成了原型结构的混乱，没有严格的父子关系，2.并且只能继承原型成员，不能继承实例成员
+
+        // 父类
+        function Person(name, age) {
+            this.name = name
+            this.age = age
+        }
+        Person.prototype.say = function () {
+            console.log(`我的名字叫${this.name}`)
+        }
+
+        // 子类 学生
+        function Student(name, age, score) {
+            this.name = name
+            this.age = age
+            this.score = score
+        }
+        // 原型式继承
+        Student.prototype = Person.prototype // Person.prototype赋值给Student.prototype。 子类的原型对象指向父类的原型对象，重写了Student.prototype。重写了原型，再实例化
+        let s1 = new Student('jojo', 5, 90);
+        console.log(s1);
+        console.log(s1.constructor === Person);
+        s1.say();
+
+    </script>
+</body>
+
+</html>

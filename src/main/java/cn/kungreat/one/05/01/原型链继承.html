@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 原型链继承
+        // 实现原理 ： 将子类的原型对象指向了父类的实例对象
+        // 弊端：只能继承原型成员，不能继承实例成员
+
+
+        // 父类
+        function Person(name, age) {
+            this.name = name
+            this.age = age
+        }
+        Person.prototype.say = function () {
+            console.log(`我的名字叫${this.name}`)
+        }
+
+        // let p1 = new Person('rose', 50)
+        // console.log(p1)
+
+        // 子类
+        function Student(name, age, score) {
+            this.name = name
+            this.age = age
+            this.score = score
+        }
+        Student.prototype = new Person('rose', 50) // Person构造函数实例化出Student.prototype。将子类的原型对象指向了父类的实例对象
+        Student.prototype.getScore = function () {
+            console.log(`${this.name}的分数是${this.score}`)
+        }
+        Student.prototype.constructor = Student // 需要手动的将Student.prototype.constructor指回Student
+
+        let s1 = new Student('jojo', 5, 90);
+        console.log(s1)
+        s1.say()
+        s1.getScore()
+        console.log(s1.constructor) // Student
+        console.log(Student.prototype.constructor) // Student
+        //  如果没有Student.prototype.constructor = Student这句话，那么s1.constructor和Student.prototype.constructor都指向Person
+
+
+    </script>
+</body>
+
+</html>

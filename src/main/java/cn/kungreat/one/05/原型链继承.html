@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // 实现原理: 子类的原型对象指向父类实例对象
+        // 弊端: 不能继承实例成员,只能继承原型成员
+        // 父类
+        function Person(name, age) {
+            // 实例成员
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.eat = function () {
+            console.log(this.name + "爱吃木桶饭");
+        }
+        // 子类
+        function Student(name, age, score) {
+            // 没有继承实例成员,只是重写了一次
+            this.name = name;
+            this.age = age;
+            this.score = score;
+        }
+        // 原型链继承
+        Student.prototype = new Person("狗东",0);
+        Student.prototype.constructor = Student; // 需要将Student.prototype.constructor手动指向Student，不然指向的是Person
+        Student.prototype.getScore = function () {
+            console.log(this.name + "的成绩是:" + this.score);
+        }
+        // 生成一个子类的实例
+        var s = new Student("欧阳三", 20, 120);
+        s.eat();
+        console.log(s.name);
+        s.getScore();
+        console.log(s);
+        console.log(s.__proto__.name);
+
+    </script>
+</body>
+</html>
