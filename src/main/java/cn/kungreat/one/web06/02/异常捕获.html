@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 浏览器在执行js代码的时候，会发生各种错误
+        // 第一种错误是 语法相关的错误
+
+        // 扩展：和本节课无关
+        // let a = 1
+        // let b = 1
+        // let c = 1
+        // console.log(a === b === c) // 首先这个语句不会报错。 console.log(true === 1) => false
+
+
+        // 异常捕获  针对特殊情况处理
+        let statusCode = 1;
+        try {
+            if (statusCode < 0) {
+                throw 'statusCode必须大于0';
+            }
+        } catch (err) {
+            console.log(err);
+        } finally {
+            console.log('无论什么情况都会执行');
+        }
+
+    </script>
+</body>
+
+
+</html>

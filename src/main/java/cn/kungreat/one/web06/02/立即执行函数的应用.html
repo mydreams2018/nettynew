@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <script>
+        var box = document.getElementById('box');
+        var li = box.getElementsByTagName('li');
+
+        // 第一种方法
+        for (var i = 0; i < li.length; i++) {
+            //自添加一个属性
+            li[i].index = i;
+            li[i].onclick = function () {
+                console.log(this.index);
+            }
+        }
+
+        // 第二种方法 let的原理是在每一个函数内部创建了单独的作用域
+        for (let i = 0; i < li.length; i++) {
+            li[i].onclick = function () {
+                console.log(i);
+            }
+        }
+
+        // 第三种方法 立即执行函数 原理 和let相同，形成了一个单独的作用域
+        for (var i = 0; i < li.length; i++) {
+            // j是形参，i是实参
+            (function (j) {
+                // 这里面是一个单独的作用域
+                li[j].onclick = function () {
+                    console.log(j);
+                }
+            })(i);
+        }
+
+         
+    </script>
+</body>
+
+</html>

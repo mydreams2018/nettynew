@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.dir(Object) //  console.dir 查询Object有哪些静态成员
+
+        // 1.Object.assign 重点掌握！！！ 将多个对象合并到一个对象中并返回,如果要合并的对象上有同名的属性，那么后来的对象的属性会覆盖掉前面的同名属性 css后来居上 float:left float:right
+        // 语法：Object.assign({}, 要合并的对象1, 要合并的对象2,....);
+        let obj1 = {
+            name: 'jojo',
+            age: 10
+        }
+        let obj2 = {
+            name: 'rose',
+            age: 5,
+            hobby: '逛街'
+        }
+        //将后边的对象 和并到第一个对象
+        let newObj = Object.assign({}, obj1, obj2);
+        console.log(newObj);
+
+        // es6 实现方法 重点掌握！！！
+        let newObj2 = { ...obj1, ...obj2 };
+        console.log(newObj2)
+
+
+        // 2.create 了解
+        // 第一种创建方式，是传入一个null
+        // console.log(Object.create(null)) // 创建出一个{}空对象,它连最基本的原型对象都没有
+        // console.log({})
+        // 第二种创建方式，是传入对象
+        // console.log(Object.create({ a: 1 })) // 创建出一个空对象，然后给这个对象的原型对象添加成员
+
+
+        //3 is 
+        // 用来判断两个参数是否`全等`（不会做隐式转换）  ===恒等：值和类型都要相同    ==：只要值相等就可以，并且js会做一个隐式的类型转换
+        // console.log(1 == '1') // true 隐式转换
+        let num1 = 1;
+        let num2 = 1;
+        let str1 = '1';
+        console.log(Object.is(num1, num2));  // true
+        console.log(Object.is(num1, str1));  // false
+
+        // 特殊情况 了解
+        // 1）
+        console.log(0 === -0) // true
+        console.log(Object.is(0, -0)) // false
+        // 2）
+        console.log(NaN === NaN) // false   NaN不等于任何值，包括NaN
+        console.log(Object.is(NaN, NaN)) // true
+
+        // 4.values keys 重点掌握！！！
+        // Object.keys 获取当前对象的所有键名，然后合并成一个数组并返回
+        // Object.values 获取当前对象的所有属性值，然后合并成一个数组并返回
+        // Object.entries 获取当前对象的键值对，然后转换成一个二维数组并返回
+        let person = { name: 'jojo', age: 5, score: 90 }
+        // 需求 ['name','age','score']
+        // 需求 ['jojo',5,90]
+
+        // 之前的实现方法 es5
+        let arr = [];
+        let arr2 = [];
+        for (let k in person) {
+            arr.push(k);
+            arr2.push(person[k]);
+        }
+        console.log(arr) // ['name', 'age', 'score']
+        console.log(arr2) // ['jojo', 5, 90]
+
+        // es6
+        let personKeys = Object.keys(person);
+        console.log(personKeys) // ['name', 'age', 'score']
+        let personValues = Object.values(person);
+        console.log(personValues) // ['jojo', 5, 90]
+        let personEntries = Object.entries(person);
+        console.log(personEntries);//
+    </script>
+</body>
+
+</html>

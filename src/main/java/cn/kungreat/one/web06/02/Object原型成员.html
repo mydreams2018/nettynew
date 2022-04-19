@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log(Object.prototype);
+        // propertyIsEnumerable 这个方法可以确定对象中指定的属性是否可以被 for in 枚举循环，但是通过原型链继承的属性除外
+        // 语法:对象.propertyIsEnumerable(属性名)，如同通过判断条件，则返回true，否则返回false
+
+        function Person(name) {
+            this.name = name;
+        }
+        Person.prototype.say = function () {
+            console.log('hello');
+        }
+        let p1 = new Person('jojo');
+        console.log(p1);
+        for (let k in p1) { // for in用来循环遍历 `可枚举` 的`实例和原型`成员
+            console.log(k); // name say
+        }
+        console.log(p1.propertyIsEnumerable('name')) // true name 是实例属性
+        console.log(p1.propertyIsEnumerable('say')) // false say 是通过原型链继承得到的
+
+        console.log(Person.prototype.propertyIsEnumerable('constructor')) // false
+        console.log(Person.prototype.propertyIsEnumerable('say')) // true
+        for (let j in Person.prototype) {
+            console.log(j) // say
+        }
+    </script>
+</body>
+
+</html>

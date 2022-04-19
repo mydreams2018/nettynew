@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Person(name, age) {
+            // 实例成员
+            this.name = name;
+            this.age = age;
+            // 私有成员 不是直接绑定在this身上 不是Person的实例属性 私有成员不会被外部修改
+            const secret = '人类某种意义上是自私的';
+            function getSecret() {
+                return secret;
+            }
+            // 特权方法，功能：让私有成员能够在外部被访问到。绑定在this身上，那么是Person的实例成员
+            // 构造函数中使用我们私有成员的方法
+            this.showSecret = function () {
+                console.log(`${this.name}的秘密是${getSecret()}`)
+            }
+        }
+
+        // 原型成员
+        Person.prototype.say = function () {
+            console.log('说话');
+        }
+
+        // 静态成员
+        Person.showInfo = function () {
+            console.log('我是人类');
+        }
+
+        let p1 = new Person('范德标', 50);
+        console.log(p1);
+        p1.showSecret();
+    </script>
+</body>
+
+</html>

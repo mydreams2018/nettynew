@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 非Object类型的数据，根据就近原则，他们调用的toString,是用的他们自己原型身上的toString，转换成字符串
+        console.log('abc'.toString());
+        console.log((123).toString());
+        console.log(true.toString());
+        console.log([1, 2, 3].toString());
+        console.log(new Date().toString());
+        console.log(function () { }.toString());
+        console.log(String.prototype);
+        console.log(Number.prototype);
+        console.log(Boolean.prototype);
+
+        // call 让非Object数据类型来调用Object原型上的toString
+        // Object.prototype.toString.call 可以获取数据的真实类型，重点！！！
+        console.log(Object.prototype.toString.call('abc')) // [object String]
+        console.log(Object.prototype.toString.call(123)) // [object Number]
+        console.log(Object.prototype.toString.call(true)) // [object Boolean]
+        console.log(Object.prototype.toString.call([1, 2, 3])) // [object Array]
+        console.log(Object.prototype.toString.call(new Date())) //[object Date]
+        console.log(Object.prototype.toString.call(function () { })) // [object Function]
+
+        console.log(typeof [1, 2, 3]) // object，typeof没办法区分数组和对象
+        console.log(typeof { a: 1 }) // object
+
+    </script>
+</body>
+
+</html>
