@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 工作中用的比较多的是eslint 来校验语法规则和代码格式
+        // script 就是脚本 标签
+        // 脚本开头
+
+        // 严格模式
+        'use strict'
+
+        // 1不允许使用未声明的变量
+        // x = 1;
+        // console.log(x);
+
+
+        // 2.严格模式定义在脚本开头，会对整个脚本执行严格模式，函数作用域里面也会生效
+        // function f() {
+        //     x1 = 1;
+        // }
+        // f();
+
+
+        // 4 不能删除 js不可删除的属性
+        // delete Object.prototype;
+        // console.log(Object.prototype);
+
+        // 5 不允许重名属性。现在只能在低版本的IE浏览器中抛错。
+        // var obj = {
+        //     a: 1,
+        //     a: 2
+        // }
+        // console.log(obj);
+
+        // 6 禁止将this指向全局
+        // window.name = 'jojo';
+        // function f() {
+        //     console.log(this.name);
+        // }
+        // f()
+
+    </script>
+</body>
+
+</html>

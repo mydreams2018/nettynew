@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 定义：方便对string，number，boolean三种基本类型数据操作，ECMAScript提供了三个特殊引用类型——基本包装类型（String，Number，Boolean）。
+        // string，number，boolean 基本数据类型
+        // String，Number，Boolean 基本包装类型
+
+        // 第一种方式用基本包装类型
+        // let str = 'hello' // 一般我们这么写就好了
+        let str1 = new String('hello');
+        let num1 = new Number(123);
+        let boolean1 = new Boolean(true);
+        console.log(str1);
+        console.log(num1);
+        console.log(boolean1);
+
+        // 第二种方式
+        let str2 = new Object('hello');
+        let num2 = new Object(123);
+        let boolean2 = new Object(true);
+        console.log(str2);
+        console.log(num2);
+        console.log(boolean2);
+
+        // 基本包装类型的作用：
+
+        let str4 = 'hello';
+
+        console.log(typeof str4) // string
+        console.log(str4.length);
+    </script>
+</body>
+
+</html>

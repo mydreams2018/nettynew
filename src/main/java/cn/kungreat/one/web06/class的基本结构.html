@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // es6 class类    es5中构造函数的一个语法糖(糖衣，或者叫做语义化)
+
+
+         // es5
+         function Person(name) {
+             this.name = name; // 实例成员
+         }
+         // 原型成员
+         Person.prototype.say = function () {
+             console.log(`${this.name}在说话`);
+         }
+         // 静态成员
+         Person.showInfo = function () {
+             console.log('我是一个人类');
+         }
+
+        // es6 类的定义
+        // class开头，跟一个类名，类名按照约定俗成，它的首字母要大写
+        class Person2 {
+            // 构造函数体，添加实例成员
+            constructor(name) {
+                this.name = name;
+            }
+            // 添加原型成员
+            say() {
+                console.log(`${this.name}在说话`);
+            }
+
+            // 静态成员，前面要加static，只有类能够调用这个方法
+            static showInfo() {
+                console.log('我是一个人类');
+            }
+        }
+
+        let p1 = new Person2('jojo');
+        console.log(p1);
+        p1.say();
+
+
+
+    </script>
+</body>
+
+</html>

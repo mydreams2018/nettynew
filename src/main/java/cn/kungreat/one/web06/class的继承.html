@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // es5当中没有继承语法，都是靠自己去实现的
+        // es6有继承语法
+        class Person {
+            // 实例成员
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            // 原型成员 this也是指向当前实例对象
+            say() {
+                console.log(`我叫${this.name}`);
+            }
+            // 静态成员
+            static showInfo() {
+                console.log('我是一个人类');
+            }
+        }
+
+        // let p1 = new Person('jojo', 5);
+        // console.log(p1)
+        // p1.say()
+        // Person.showInfo()  静态成员只能由类/构造函数去调用
+
+        // 子类
+        class Student extends Person {   // extends 类似 es5当中构造函数里面的原型链继承，用来继承原型成员
+            // 实例成员
+            constructor(name, age, score) {
+                super(name, age)  // 类似 es5当中借用构造函数 去 继承父类的实例属性
+                this.score = score // 自己独有的一个实例属性
+            }
+            // 原型成员 this也是指向当前实例对象
+            say() {
+                console.log(`子类我叫${this.name}`);
+            }
+        }
+        let s1 = new Student('jojo', 5, 90);
+        console.log(s1);
+        s1.say();
+    </script>
+</body>
+
+</html>
