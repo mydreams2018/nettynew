@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+
+    <script>
+        var buttons = document.getElementsByTagName('button');
+
+        // 1: 立即执行函数 全局变量私有化，把全局变量拿到局部中去使用，创建出一个独立的作用域
+        // for (var i = 0; i < buttons.length; i++) {
+        //     (function (j) {
+        //         buttons[j].onclick = function () {
+        //             console.log(j);
+        //         }
+        //     })(i);
+        // }
+
+        // 2 闭包 解决思路 先把外部变量存到闭包里面，点击的时候把闭包内部的局部变量拿到外部来使用
+        // for (var i=0; i < buttons.length; i++) {
+        //     buttons[i].onclick = f(i);
+        // }
+
+        // 一个闭包的变形，要传参,a是形参，闭包里面的变量不会被销毁
+        function f(j) {
+            return function () {
+                console.log(j);
+            }
+        }
+
+        //3 let
+        for (let i=0; i < buttons.length; i++) {
+            buttons[i].onclick = function () {
+                console.log(i);
+            };
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 为什么很少看到在对象里面来写方法：因为函数一般都是要共用的，直接写在外部就好了
+        // function f(){
+
+        // }
+
+        let obj1 = {
+            name: "jojo",
+            age: 5,
+            hobby: ['玩游戏', '吃零食'],
+            sister: {
+                name: 'rose',
+                age: 3,
+                hobby: ['睡觉', '吃东西']
+            },
+            fn: function () {
+                console.log('我是jojo');
+            }
+        }
+        let obj2 = {};
+        // 浅拷贝
+        for (let k in obj1) {
+            obj2[k] = obj1[k];
+        }
+        obj1.sister.age = 4;
+        console.log(obj2);
+        console.log(obj1.fn === obj2.fn) // true
+
+        // for in 也可以用来拷贝数组
+        let arr1 = [1, 2, 3]
+        let arr2 = []
+        for (let i in arr1) {
+            arr2[i] = arr1[i];
+        }
+        console.log(arr2);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 局部变量的生命周期
+        // js中每个函数都有自己的作用域，那么在该函数中定义的变量，只能在该函数或者该函数的嵌套函数里面来使用
+        // function f() {
+        //     var a = 1; // 创建局部变量a
+        //     console.log(a);
+        // }
+        // f()
+        // console.log(a); //这是访问不到的
+
+        // 怎么在函数外部来访问到函数内部的局部变量
+
+        // 1 直接返回变量。但是这种方式没有延长变量的生命周期。每次调用函数，局部变量a都会重新被创建，函数调用完成后，a都会被销毁
+        function f() {
+            var a = 1; // 创建了a变量
+            return a; // 函数调用后a 就会被销毁
+        }
+        console.log(f());
+        console.log(f()); // 重新调用了f函数。a又会被重新创建和销毁
+
+        // 2 延长变量的生命周期
+        // 函数里面返回另一个函数的结构叫做闭包
+        // 特点：
+        // 1.打破作用域的限制，让外部访问到函数内部的变量成为可能，延长了函数内部的变量的生命周期
+        // 2.可以避免使用全局变量，避免全局变量的污染
+        // 3.保护私有变量不会被随意修改，只能被访问
+        // 4.局部变量不会被销毁，会常驻在内存中，有造成内存泄漏的一个隐患（大部分是针对ie）
+        function f1() {
+            var a = 1; // 创建了a局部变量
+            return function () {
+                return a;
+            }
+        }
+
+        var f2 = f1() // function () {return a }   // 当调用f函数的时候，`return a`还没有被执行，意味着a还在内存中等待使用，a没有被销毁，变量a的生命周期就被延长了。这一步创建a这个局部变量，也只创建了一次
+        console.log(f2()) // 1
+        console.log(f2()) // 1
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Person(name) {
+            this.name = name;
+        }
+        Person.prototype.info = '人类';
+
+        function Student(name, score) {
+            Person.call(this, name);
+            this.score = score;
+        }
+        Student.prototype = new Person();
+        Student.prototype.constructor = Student;
+
+        let s1 = new Student('jojo', 90);
+        console.log(s1);
+        for (let k in s1) {
+            if (s1.hasOwnProperty(k)) {
+                console.log(k)
+            }
+        }
+        // s2 拷贝 s1可能只需要name和age就够了，那么可以在for in 里面用hasOwnProperty来进行一个过滤
+    </script>
+</body>
+
+</html>

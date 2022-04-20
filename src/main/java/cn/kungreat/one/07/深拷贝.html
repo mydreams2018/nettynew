@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 深拷贝：
+        // 目的：要让引用类型的数据也完整的拷贝过来，而不是只拷贝一个地址
+        // 思路：以obj1为例，
+        // 1 判断是否是基本数据类型
+        // 2 如果是基本数据类型，那么直接进行浅拷贝
+        // 3 如果不是，那么对该数据递归调用，完成所有层次的拷贝
+        let obj1 = {
+            name: "jojo",
+            age: 5,
+            hobby: ['玩游戏', '吃零食'],
+            sister: {
+                name: 'rose',
+                age: 3,
+                hobby: ['睡觉', '吃东西']
+            }
+        }
+        let obj2 = {};
+        // source代表源数据，也就是要从它身上进行拷贝属性。target代表目标，也就是我们要把别的对象的属性复制到这个对象身上
+        function deepCopy(source,target){
+            //出口  for in
+            for (let k in source){
+                // 方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性（也就是，是否有指定的键 ，我只要实例属性
+                if (source.hasOwnProperty(k)) {
+                    // 引用类型的数据
+                    if(typeof source[k] === 'object'){
+                        // 1 判断是数组还是对象
+                        // target[k] = Object.prototype.toString.call(source[k]) === '[object Array]' ? [] : {}
+                        // 2
+                        if (Object.prototype.toString.call(source[k]) === '[object Array]') {
+                            target[k] = [];
+                        } else {
+                            target[k] = {};
+                        }
+                        // 3 判断是否是数组 Array.isArray
+                        deepCopy(source[k], target[k]);
+                    } else {
+                        // 基础数据类型 浅拷贝
+                        // console.log(k)
+                        target[k] = source[k];
+                    }
+                }
+            }
+        }
+        deepCopy(obj1, obj2);
+        // 验证引用数据类型的值发生改变，会不会互相影响到
+        obj1.sister.age = 4;
+        console.log(obj2);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //  比 冒泡排序  慢  数组的  增加和删除 是很浪费性能的.  获得设置元素很快. 下边的完全创建了很多个数组中转
+        // 实现原理：找出一个中间的索引对应的数字，假如左升序，将剩余的元素，小于自己的放在一个左边的数组中，否则放在右边的数组中
+        let list = [9, 3, 8, 7, 5];
+
+        function quickSort(arr) {
+            if (arr.length <= 1) { // 出口
+                return arr;
+            }
+            // 第一步，找到中间的索引
+            let middleIndex = Math.floor(arr.length / 2);  //  2   floor 地板; Math.ceil()  ceil 天花板
+            let middleItem = arr.splice(middleIndex, 1)[0]; // splice一定要掌握！！！ 语法：.splice(从哪个位置开始的索引，要删除的元素的个数，你要添加的元素)
+            console.log(middleItem);
+            console.log(arr);
+            // 第二步，我要拿到除了middleItem之外的元素集合，然后对元素集合来做一个遍历判断，小于自己的放在一个左边的数组中，否则放在右边的数组中.我们这里比的是数字的大小，不是比索引了，因为我们是根据数字大小来进行排序
+            let leftArr = []; // 用来存放比中间数小的数组项
+            let rightArr = []; // 用来存放其他数组项
+            arr.forEach(item => {
+                // 当前项比中间的数字小
+                if (item < middleItem) {
+                    leftArr.push(item);
+                } else {
+                    rightArr.push(item);
+                }
+            })
+            console.log(leftArr);
+            console.log(rightArr);
+            return [...quickSort(leftArr), middleItem, ...quickSort(rightArr)];
+        }
+        console.log(quickSort(list))  // list是实参  [3, 5, 7, 8, 9]
+    </script>
+</body>
+
+</html>

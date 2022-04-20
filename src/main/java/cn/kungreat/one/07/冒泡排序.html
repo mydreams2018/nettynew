@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // 冒泡排序：名字解释：因为这种排序算法的每一个元素像一个小气泡一样，根据自身大小，小的往一侧移动，大的往一侧移动
+        // 需求 对[5, 3, 9, 6, 4]进行倒序 得到[9,6,5,4,3]
+        let arr = [5, 3, 9, 6, 4];
+        // 第一轮循环
+        for (let i = 0; i < arr.length - 1; i++) {
+            // 第一次循环 i为0
+            // 第二轮循环  第一次循环 [3, 9, 6, 4]
+            for (let j = i + 1; j < arr.length;j++) {
+                if (arr[i] < arr[j]) {
+                    let _temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = _temp;
+                }
+            }
+        }
+        console.log(arr);
+
+        // 2. 实现一个互换
+        let a = 1;
+        let b = 2;
+        [a, b] = [b, a];
+        console.log(a, b);
+    </script>
+</body>
+
+</html>

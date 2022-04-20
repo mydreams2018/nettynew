@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 需求：使用setTimeout开启10个定时器，每隔100毫秒分别从0打印到9
+
+        // 错误
+        // for (var i = 0; i < 10; i++) {
+        //     setTimeout(function () { // setTimeout本身是一个同步的代码，他的回调函数才是一个异步代码
+        //         console.log(i); // i拿到的是全局作用域里面的变量
+        //     },  i*100);
+        // }
+
+        // 正确的 1
+        // for (let i = 0; i < 10; i++) {
+        //     setTimeout(function () {
+        //         console.log(i);
+        //     },  i*100);
+        // }
+        // 正确的 2
+        for (var i = 0; i < 10; i++) {
+            // setTimeout第一个参数要传进一个匿名函数
+            // setTimeout(function () {
+            // }, i * 100);
+            (function (j) { // j是形参
+                setTimeout(function () {
+                    console.log(j);
+                }, j * 100);
+            })(i); // i是实参
+        }
+
+        // 3 闭包 把全局变量先存到闭包里面，然后再把闭包里面的局部变量给全局使用
+        for (var i = 0; i < 10; i++) {
+            setTimeout(f(i), i * 100) // setTimeout是同步的，先把全局变量存进去
+        }
+
+        function f(j){
+            return function () {
+                console.log(j);
+            }
+        }
+    </script>
+</body>
+
+</html>

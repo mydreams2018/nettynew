@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 递归：函数中调用函数自己的结构称作递归  没有出口就是死循环
+        // var i = 0;
+        // function f() {
+        //     console.log(i)
+        //     i++
+        //     f();
+        // }
+        // f();
+
+        // i < 10 循环的结束条件，循环的一个出口
+        // for (let i = 0; i < 10; i++) {
+        //     console.log(i);
+        // }
+
+        // 没有出口 死循环
+        // for (let i = 0; ; i++) {
+        //     console.log(i)
+        // }
+
+        // 递归 怎么避免死循环
+        // 递归的两个要素
+        // 入口，什么情况下重复调用自己
+        // 出口，什么情况下跳出循环
+
+        var i = 0;
+        function f() {
+            console.log(i);
+            i++;
+            if (i < 10) { // i < 10是一个入口，否则是一个出口，就不会调用f函数了
+                f()
+            }
+        }
+        f();
+
+    </script>
+</body>
+
+</html>

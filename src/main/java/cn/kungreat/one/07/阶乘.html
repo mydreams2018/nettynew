@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 阶乘 用递归实现
+        // 需求：实现一个5的递归
+        // 5的递归 5 * 4 * 3 * 2 * 1
+
+        // 过程
+        // f(5)
+        // 5 * f(4)
+        // 5 * 4 * f(3)
+        // 5 * 4 * 3 * f(2)
+        // 5 * 4 * 3 * 2 * f(1) // 出口
+        // 5 * 4 * 3 * 2 * 1
+
+        function f(num) {
+            if (num > 1) { // 入口
+                return num * f(num - 1); // f(num - 1)是咱们自己写进去的，以此来进行递归。不可以用f(num--)，可以用f(--num)
+            } else { // 出口
+                return 1;
+            }
+            // 三元表达式
+            // return num > 1 ? num * f(num - 1) : 1
+        }
+        console.log(f(5));
+    </script>
+</body>
+
+</html>

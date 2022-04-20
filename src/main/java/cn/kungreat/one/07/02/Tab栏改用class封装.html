@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        div, span, ul, li, h2, body {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .all {
+            width: 440px;
+            border: 1px solid #000;
+            padding: 10px;
+            margin: 80px auto;
+        }
+
+        .all h2 {
+            height: 30px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .all h2 span {
+            width: 100px;
+            height: 30px;
+            background: #CCC;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .all h2 span.current {
+            background: #FF3366;
+        }
+
+        .all ul li {
+            display: none;
+            background: #FF3366;
+            height: 200px;
+        }
+
+        .all ul li.current {
+            display: block
+        }
+    </style>
+</head>
+
+<body>
+    <div id="tab1" class="all">
+        <h2>
+            <span class="current">新闻</span>
+            <span>娱乐</span>
+            <span>游戏</span>
+            <span>财经</span>
+        </h2>
+        <ul>
+            <li class="current">新闻</li>
+            <li>娱乐</li>
+            <li>游戏</li>
+            <li>财经</li>
+        </ul>
+    </div>
+
+
+    <div id="tab2" class="all">
+        <h2>
+            <span class="current">欧阳三</span>
+            <span>南宫四</span>
+            <span>西门五</span>
+            <span>令狐六</span>
+        </h2>
+        <ul>
+            <li class="current">欧阳三</li>
+            <li>南宫四</li>
+            <li>西门五</li>
+            <li>令狐六</li>
+        </ul>
+    </div>
+
+    <script>
+
+
+        // es6写法
+        class Tab {
+            // 实例属性
+            constructor(id) {
+                this.box = document.getElementById(id);
+                this.btns = this.box.getElementsByTagName('span');
+                this.pages = this.box.getElementsByTagName('li');
+            }
+
+            // 原型方法
+            clearFn() {
+                for (var j = 0; j < this.btns.length; j++) {
+                    this.btns[j].className = '';
+                    this.pages[j].className = '';
+                }
+            }
+            clickFn() {
+                this.instance.clearFn();
+                this.className = 'current';
+                this.instance.pages[this.index].className = 'current';
+            }
+            initFn() {
+                for (var i = 0; i < this.btns.length; i++) {
+                    this.btns[i].index = i;
+                    this.btns[i].instance = this;
+                    this.btns[i].onclick = this.clickFn;
+                }
+            }
+        }
+
+        var t1 = new Tab('tab1');
+        var t2 = new Tab('tab2');
+
+        t1.initFn();
+        t2.initFn();
+        console.log(t1);
+        console.log(t2);
+    </script>
+</body>
+
+</html>
