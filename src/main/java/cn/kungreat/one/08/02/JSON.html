@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    JSON数据格式： k:v 型式 都有好多工具类实现数据转换   用于前后端进行数据交换的一种文本格式
+    特点：1.不能写注释
+    2.复合类型的值只能是数组或者是对象，不能写函数、正则、日期对象
+    3.原始类型的值：只能是数字，字符串，null，布尔值
+    4.对象的键名必须放在双引号里面
+    5.对象的键值必须放在双引号里面
+    6.对象或者数组最后一个成员后面，不能加逗号
+    <script>
+        // eslint
+        let obj = {
+            a: 1,
+            b: 2,
+            c: 3,
+            arr : [1, 2, 3,]
+        }
+        console.log(JSON.stringify(obj));
+    </script>
+</body>
+
+</html>

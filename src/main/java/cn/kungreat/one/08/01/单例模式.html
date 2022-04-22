@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 单例模式 解决一个问题：他要尝试维护一个全局的实例对象
+        // 使用场景：1.全局状态管理，Storage, Vuex -> store
+        // 2 模态框，登录框，
+        // 3 购物车
+        // 4 引用第三方库 jq
+
+        // 伪代码
+        // 前提：我只能有一个女朋友
+        // class 找女朋友 {
+        //     方法() {
+        //         if (我还没有女朋友呢) {
+        //             亲爱的 = new 找女朋友()
+        //         }
+        //     }
+        //     return 亲爱的
+        // }
+        // 女朋友1 = 找女朋友.方法()
+        // 女朋友2 = 找女朋友.方法()
+        // 女朋友1  女朋友2 是同一个女朋友
+
+        // instance 实例
+        class Person {
+            static getInstance() {
+                // Person.instance为null，证明还没有实例对象
+                if (Person.instance == null) {
+                    // 实例化一个对象，然后存在Person.instance
+                    Person.instance = new Person();
+                }
+                return Person.instance;
+            }
+        }
+        let p1 = Person.getInstance();
+        let p2 = Person.getInstance();
+        console.log(p1);
+        console.log(p1 === p2); // true
+
+        class Student {
+            static getInstance() {
+                // 注释掉是没有意义的
+                // Person.instance为null，证明还没有实例对象
+                // if (Person.instance == null) {
+                //     // 实例化一个对象，然后存在Person.instance
+                //     Person.instance = new Person()
+                // }
+                return Person.instance;
+            }
+        }
+        let s1 = Student.getInstance();
+        let s2 = Student.getInstance();
+        console.log(s1 === p1); //  true
+        console.log(s2);
+    </script>
+</body>
+
+</html>

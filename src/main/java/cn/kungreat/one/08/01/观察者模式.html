@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 观察者模式：观察者模式定义了一种`一对多`的`依赖关系`，让`多个`观察者对象`同时监听`某`一个`目标对象，当这个`目标对象的状态发生变化`时，会`通知``所有`观察者对象，使它们能够`自动更新`。
+        // 使用频率最高，面试频率也最高
+        // 使用场景：Vue 双向数据绑定 主要是用在表单空间的数据 用到了发布订阅模式
+
+        // 定义一个发布者 publish 发布    observers 观察者
+        class Publisher {
+            constructor(name) {
+                this.name = name;
+                // 定义一个数组 理解成创建一个群 ，我才能拉人进来
+                this.observers = []; // 把这个微信群理解成类身上的实例属性，把这个群叫做observers，在外部不需要获取到observers这个属性
+            }
+
+            // 拉人进群 增加订阅者
+            add(observer) {
+                this.observers.push(observer);
+            }
+
+            // 踢人出群 移除订阅者
+            remove(observer) {
+                this.observers.forEach((item, index) => {
+                    if (observer === item) {
+                        this.observers.splice(index,1);
+                    }
+                })
+            }
+
+            // 通知订阅者
+            setState() {
+                this.observers.forEach(item => {
+                    item.updateState();
+                })
+            }
+        }
+
+        // 定义一个观察者/订阅者
+        class Observer {
+            constructor(name, state) {
+                this.name = name;
+                this.state = state;
+            }
+            // 处理消息 方法的定义
+            updateState() {
+                console.log(`${this.name}说：${this.state}`);
+            }
+        }
+
+        class Fe extends Observer {
+            constructor(name, state) {
+                super(name, state);
+            }
+        }
+        class Be extends Observer {
+            constructor(name, state) {
+                super(name, state);
+            }
+        }
+        class Test extends Observer {
+            constructor(name, state) {
+                super(name, state);
+            }
+        }
+
+        const leader = new Publisher('领导');
+        const fe = new Fe('前端', '好的，马上干活');
+        const be = new Be('后端', '再摸会鱼');
+        const test = new Test('测试', '他们干完我再干');
+
+        // 拉人进群
+        leader.add(fe);
+        leader.add(be);
+        leader.add(test);
+        console.log(leader);
+
+        // 踢人
+        leader.remove(test);
+        console.log(leader);
+
+        // 发布消息
+        leader.setState();
+    </script>
+</body>
+
+</html>

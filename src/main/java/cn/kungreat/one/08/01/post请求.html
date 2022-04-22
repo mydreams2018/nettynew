@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    用户名：<input type="text" id="user">
+    <br>
+    密码：<input type="password" id="password">
+    <br>
+    <button id="btn">登录</button>
+    <script>
+        // 用get请求去向服务器获取数据  获取列表数据用get
+        // 用post向服务器发送数据   表单用post把用户名，密码，发送给服务器
+        // Content-Type 设置我们发送给服务器的数据类型。常见的Content-Type有：
+        // 1 application/x-www-form-urlencoded  浏览器默认，最常见的 POST 提交数据的方式
+        // 2 application/json 告诉服务端消息主体是序列化后的 JSON 字符串 序列化：把对象转换为一个字符串
+        // 3 multipart/form-data 用在表单上传文件时
+
+        let user = document.getElementById('user'); // 拿到用户名input框的DOM
+        let password = document.getElementById('password'); // 拿到密码框input框的DOM
+        let btn = document.getElementById('btn');
+
+        btn.onclick = function () {
+            let userVal = user.value.trim(); // 获取用户名input框的输入文本
+            let passwordVal = password.value.trim(); // 获取密码框input框的输入文本
+            // 1.非空校验
+            if (userVal && passwordVal) {
+                //2 创建ajax对象
+                let ajax = new XMLHttpRequest();
+                // 3 设置请求路径和请求方式
+                ajax.open('post', 'http://kumanxuan1.f3322.net:8809/users/login');
+                // 4 设置请求头 ，否则数据没办法传到后台
+                ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                // 5 绑定监听状态改变的处理事件
+                ajax.onreadystatechange = function () {
+                    if (ajax.readyState === 4 && ajax.status === 200) {
+                        console.log(ajax.responseText); // 字符串格式
+                        console.log(JSON.parse(ajax.responseText)); // 字符串格式
+                        let res = JSON.parse(ajax.responseText);
+                        // let token = res.data.token
+                        // let user = res.data.user
+
+                        let { token, user } = res.data;
+                        console.log(token);
+                        console.log(typeof ajax.responseText);
+                    }
+                }
+                // 6 发送请求
+                ajax.send(`username=${userVal}&password=${passwordVal}`)
+            } else {
+                alert('用户名和密码不能为空');
+            }
+        }
+    </script>
+</body>
+
+</html>

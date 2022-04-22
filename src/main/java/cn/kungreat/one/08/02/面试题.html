@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 需求：有两个数组employees，companies，要求输出['员工张三，29岁，工作于百度', '员工李四，26岁，工作于阿里巴巴'，...]
+        // 员工
+        let employees = [
+            {
+                name: "张三", // 员工名字
+                empId: 0, // 员工id
+                age: 29, // 员工年龄
+                compId: 1, // 所属公司id
+            },
+            {
+                name: "李四",
+                empId: 1,
+                age: 26,
+                compId: 2,
+            },
+            {
+                name: "王五",
+                empId: 2,
+                age: 28,
+                compId: 1,
+            },
+            {
+                name: "小明",
+                empId: 3,
+                age: 32,
+                compId: 3,
+            },
+        ];
+        let companies = [
+            {
+                name: "百度", // 公司名称
+                id: 1, // 公司id
+            },
+            {
+                name: "阿里巴巴",
+                id: 2,
+            },
+            {
+                name: "腾讯",
+                id: 3,
+            },
+        ];
+
+        // 1 定义一个方法，通过员工所属的公司id,来获取公司的名字
+        function getCompanyNameById(compId, companies) {
+            // 数组find方法，用来判断数组中是否有满足判断条件的数组项，如果有，那么返回第一个满足条件的数组项
+            // matchedItem
+            let matchedItem = companies.find(item => {
+                return item.id === compId;
+            })
+            console.log(matchedItem);
+            if (matchedItem) {
+                return matchedItem.name;
+            } else {
+                return '暂无此人';
+            }
+        }
+        console.log(getCompanyNameById(1, companies));
+
+        // 2 遍历员工的数组，从而生成一个最终的结果
+        let arr = [];
+        employees.forEach(item => {
+            arr.push(`员工${item.name},${item.age}岁，工作于${getCompanyNameById(item.compId, companies)}`)
+        })
+        console.log(arr);
+
+        // .map 可以对数组进行循环，并且对数组每一项进行一个统一操作并返回一个数组 掌握
+        arr = employees.map(item => {
+            return `员工${item.name},${item.age}岁，工作于${getCompanyNameById(item.compId, companies)}`
+        })
+        console.log(arr);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var basket = [
+            { fruit: "苹果", veg: "胡萝卜", nut: "花生" },
+            { fruit: "梨", veg: "西芹", nut: "坚果" },
+            { fruit: "香蕉", veg: "土豆", nut: "杏仁" },
+            { fruit: "西瓜", veg: "豆芽", nut: "核桃" },
+        ];
+
+         let newArr = [];
+                basket.forEach((item, index) => {
+                    newArr.push([]);
+                    // 3. 遍历对象
+                    for (let k in item) {
+                        newArr[index].push(item[k]);
+                    }
+                })
+                console.log(newArr);
+    </script>
+</body>
+</html>

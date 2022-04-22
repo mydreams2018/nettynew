@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // AJAX   XMLHttpRequest()
+        // 概念：AJAX对象是XMLHttpRequest对象用于在后台与服务器交换数据
+        // 创建过程
+        function createAjax() {
+            let request = null;
+            // 兼容性 IE没有XMLHttpRequest
+            if (!window.XMLHttpRequest) {
+                request = new ActiveXObject('Microsoft.XMLHTTP');
+            } else {
+                request = new XMLHttpRequest();
+            }
+            return request;
+        }
+        console.log(createAjax());
+
+        // ajax的对象的属性
+        // 1.readyState 有5个状态值
+        //    1)   0 .初始化 表示ajax对象还没有完成初始化
+        //    2)   1 .表示ajax对象开始发送请求
+        //    2)   2 .表示ajax对象请求发送完成
+        //    2)   3 .表示ajax对象开始读取服务器的响应
+        //    2)   4 .表示ajax对象读取服务器响应结束
+        // 2.status 响应的HTTP状态码
+        //    1)   200 . 请求成功
+        //    2)   404 . not found 找不到资源，请求资源不存在
+        //    3)   500 . 服务端错误，找后端处理
+        //    4)   400 . 客户端请求有语法错误，服务器无法理解
+        //    5)   403 . 服务器收到但是拒绝服务
+        //    6)   304 . 已缓存，文档已经被缓存，直接从缓存中调用
+
+
+    </script>
+</body>
+
+</html>

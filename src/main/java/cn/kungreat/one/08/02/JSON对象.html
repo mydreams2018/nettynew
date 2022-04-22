@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // JSON对象是js中的原生对象，可以用来处理JSON格式数据
+        // JSON对象身上有两个方法
+        // 1.JSON.parse 将js字符串转成相应的数据格式(对象)
+        // 2.JSON.stringify 将js对象转换成对应的字符串
+        let obj = {
+            "code": 200,
+            "msg": "操作成功",
+            "data": {
+                "user": {
+                    "id": "6176137bec000d5245d4f4e2",
+                    "nickname": "666",
+                    "phone": "666",
+                    "email": "",
+                    "password": "666",
+                    "gender": 0,
+                    "level": 1,
+                    "city": "",
+                    "headImgUrl": "/images/default.jpg",
+                    "info": null,
+                    "state": true
+                },
+                "token": "11c68697ff694d16bb984fa668c11017"
+            },
+            "arr": [
+                1,
+                2,
+                3
+            ],
+            "a": 1
+        }
+        console.log(JSON.stringify(obj));
+        // JSON.parse搭配JSON.stringify可以实现一个深拷贝
+        let p1 = {
+            name: 'jojo',
+            age: 5,
+            hobby: ['吃饭', '睡觉'],
+            sister: {
+                name: 'rose',
+                age: 3,
+                hobby: ['吃东西', '玩玩具']
+            }
+        }
+
+        // 1.把对象转换成字符串,序列化
+        let str = JSON.stringify(p1);
+        // 2.把刚刚得到的字符串转换成对象，反序列化
+        let p2 = JSON.parse(str);
+        p1.sister.age = 4;
+        console.log(p2);
+    </script>
+</body>
+
+</html>
