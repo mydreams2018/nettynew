@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 单线程 多线程
+        // js是单线程 提高效率
+        // 你只能在40期上课，没办法同时在41期上课，这是一个单线程
+        // 多线程：一边唱歌一边跳舞
+        // 说明js先执行同步代码，再执行异步代码
+        setTimeout(() => {
+            console.log('异步'); // 异步代码
+        }) // 一般来说，这里会有4毫秒的延迟
+
+        for (let i = 0; i < 10000; i++) {
+            console.log('同步');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 元字符 用来快速的实现不同的规则
+        // \d 匹配数字 digit 数字  \D 匹配非数字，和\d是反过来的
+        // \w 匹配数字、字母和下划线_  word单词        \W 和\w相反
+        // \s 匹配空白字符，包含换行符、制表符等    \S 和\s相反
+
+        // 数量限定
+        // * 表示匹配特定规则出现 任意 次数
+        // + 表示匹配特定规则至少出现一次
+        // ? 表示匹配特定规则至少0次或者1次
+        // {n} 表示匹配特定规则出现n次
+        // {n，} 表示匹配特定规则至少出现n次
+        // {n，m} 表示匹配特定规则出现n次到m次（包含n和m）
+        // 开头结尾限定
+        // 开头限定 用^
+        // 结尾限定 用$
+        // 需求 ：初步判断 简单的判断手机号是否是11位数字，还有第一位是以1开头  13455566677
+        // 更进一步的判断 ： 一般来说：第一位以1开头 第二位有3,4,5,7,8 后面再跟9个数字
+        let reg = /^1\d{10}$/; // 以数字1开头，后面跟10位数字，总共11位
+        let phone = '13455566677';
+        let phone2 = '23455566677';
+        let phone3 = '1345556667a';
+        let phone4 = '134555666771';
+        let phone5 = 'a13455566677';
+        let phone6 = '11111111111';
+        console.log(reg.test(phone)); // true
+        console.log(reg.test(phone2)); // false
+        console.log(reg.test(phone3)); // false
+        console.log(reg.test(phone4)); // false
+        console.log(reg.test(phone5)); // false
+        console.log(reg.test(phone6)); // true
+    </script>
+</body>
+
+</html>

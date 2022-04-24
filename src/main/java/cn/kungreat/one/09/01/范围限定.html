@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 范围限定 以手机号为例，我要限定第二位是3,4,5,7,8中的其中一位
+        // 1.连续范围  [0-9] 匹配数字 相当于\d;  [a-z] 匹配小写字母  [A-Z] 匹配大写字母
+        // 2.范围集合 [0-9a-zA-Z]   // [0-9a-zA-Z] 匹配数字加字母   \w 匹配数字加字母加下划线
+        // 3.无规律集合 [259a-f] // 匹配2，5，9和a到f的任意字符
+        // 4.取反 [^0-9] // 匹配非数字（也可以用\D匹配非数字）   在范围限定[]里面，^表示范围取反，否则表示匹配特定规则的开头
+        // 更进一步的判断 ： 一般来说：第一位以1开头 第二位是3,4,5,7,8中的其中一位 后面再跟9个数字
+        let reg = /^1[3|4|5|7|8]\d{9}$/;
+        let phone = '13455566677';
+        let phone2 = '23455566677';
+        let phone3 = '1345556667a';
+        let phone4 = '134555666771';
+        let phone5 = 'a13455566677';
+        let phone6 = '16455566677';
+        console.log(reg.test(phone)); // true
+        console.log(reg.test(phone2)); // false
+        console.log(reg.test(phone3)); // false
+        console.log(reg.test(phone4)); // false
+        console.log(reg.test(phone5)); // false
+        console.log(reg.test(phone6)); // false
+
+        // 2. css 色值 #fbb123   #fcf #ffccff 16进制 0-9 a b c d e f 
+        let cssReg = /^#[0-9a-fA-F]{6}$|^#[0-9a-fA-F]{3}$/;
+        let otherReg = /^#[0-9a-zA-Z]{6}$/;
+        let color1 = '#fbb123';
+        let color2 = '#rbb123';
+        let color3 = '#fbb123g';
+        let color4 = '#fcf';
+        let color5 = '#fbb1rr';
+        console.log(cssReg.test(color1)); // true
+        console.log(cssReg.test(color2)); // false
+        console.log(cssReg.test(color3)); // false
+        console.log(cssReg.test(color4)); // true
+        console.log(otherReg.test(color5)); // true
+        console.log(cssReg.test(color5)); // false
+
+    </script>
+</body>
+
+</html>

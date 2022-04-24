@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 问题：setTimeout 和 Promise的异步回调 哪个先进入任务队列
+        // 执行栈的执行过程：1.先执行主线程里面的同步代码 2.在任务队列里面查找微任务（Promise的回调）3.任务队列里面的微任务执行完后，开始在任务队列里面查找宏任务（定时器）
+        console.log('1'); // 1 全局的 同步的
+        setTimeout(function () {
+            console.log('2'); // 5
+            new Promise(function (resolve) {
+                console.log('3'); // 6
+                resolve();
+            }).then(function () {
+                console.log('4') // 7
+            })
+        })
+        new Promise(function (resolve){ // promise本身是一个同步的代码，.then和.catch才是一个异步代码
+            console.log('5'); //2
+            resolve();
+        }).then(function (){
+            console.log('6'); //4
+        })
+        console.log('7'); //3
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 任务队列，用来存储异步代码的顺序，先进先出（排队喝早茶）
+        // 全局代码 进入执行栈 分为同步 异步
+        // 同步代码在主线程上运行，异步代码进入任务队列
+        // 主线程执行完毕后，检查任务队列，执行最快的异步代码，如果延迟时间一样的话遵循先进先出
+        console.log('进入全局环境'); // 全局环境 同步代码
+        // setTimeout(() => {
+        //     console.log('定时器1的回调') // 1
+        //     setTimeout(() => {
+        //         console.log('定时器3的回调') // 3
+        //     }, 3000)
+        // }, 1000)
+
+        // setTimeout(() => {
+        //     console.log('定时器2的回调') // 2
+        // }, 2000)
+
+        // setTimeout(() => {
+        //     console.log('定时器1的回调') // 1
+        //     setTimeout(() => {
+        //         console.log('定时器3的回调') // 2
+        //     }, 500)
+        // }, 1000)
+
+        // setTimeout(() => {
+        //     console.log('定时器2的回调') // 3
+        // }, 2000)
+
+        setTimeout(() => {
+            console.log('定时器1的回调'); // 1
+            setTimeout(() => {
+                console.log('定时器3的回调'); // 3
+            }, 1000);
+        }, 1000);
+
+        setTimeout(() => {
+            console.log('定时器2的回调'); // 2
+        }, 2000);
+    </script>
+</body>
+
+</html>

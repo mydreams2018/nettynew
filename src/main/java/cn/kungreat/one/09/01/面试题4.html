@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 对以下数据 取出每人(name)最大的销售量(sales)数据 ( 对sales排序对name去重)
+        // 先对arr进行升序排序，
+        let arr = [
+            { name: "小明", year: 2019, sales: 53 },
+            { name: "小明", year: 2020, sales: 234 },
+            { name: "小明", year: 2018, sales: 24 },
+            { name: "小强", year: 2019, sales: 31 },
+            { name: "小强", year: 2020, sales: 567 },
+            { name: "小强", year: 2018, sales: 678 },
+            { name: "小红", year: 2019, sales: 465 },
+            { name: "小红", year: 2020, sales: 82 },
+            { name: "小红", year: 2018, sales: 576 },
+            { name: "小马", year: 2019, sales: 4567 },
+            { name: "小马", year: 2020, sales: 832 },
+            { name: "小马", year: 2018, sales: 674 },
+        ]
+
+        // 创建一个新的对象，循环arr,然后判断arr当前项的name属性是否和新的对象中的任一项的属性名字一样，如果是，那么说明该属性已经在对象中存在，我们用新的数组项去替换掉同名属性值，否则以当前项的name属性创建一个新的对象
+        let obj = [];
+        arr.forEach(item => {
+            let temp = obj.find(element => element.name==item.name);
+            if(temp){
+                temp.vaus.push(item);
+            }else{
+                obj.push({
+                    name:item.name,
+                    vaus:[item]
+                });
+            }
+        })
+        console.log(obj);
+    </script>
+</body>
+
+</html>

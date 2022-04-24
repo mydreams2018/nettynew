@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 正则 英语原文叫做regular，有规律的，有规则的 。表达式 expression   regExp 正则表达式
+        // 组成：一种 字符串序列形成的 搜索模式。正则可以是一个简单的字符串，也可以是一个更复杂的模式。
+        // 作用：可以用于所有文本的查找和替换操作
+
+        // 创建正则 有两种方式
+        // 第一种 利用正则对象创建 let reg = new RegExp('规则','修饰符')
+        // 修饰符： i 忽略大小写 g全局匹配  m多行匹配
+
+        // 需求：校验字符串当中是否包含某一个子字符串
+        // 正则表达式.test(要搜索的字符串)  如果包含那么返回true，否则返回false
+        // let reg = new RegExp('a'); // 区分大小写
+        // let str = 'abc';
+        // let str2 = '123';
+        // let str3 = 'Abc';
+        // console.log(reg.test(str));
+        // console.log(reg.test(str2));
+        // console.log(reg.test(str3)); // false
+
+        // let reg = new RegExp('a', 'i'); // 不区分大小写
+        // let str = 'abc';
+        // let str2 = '123';
+        // let str3 = 'Abc';
+        // console.log(reg.test(str));
+        // console.log(reg.test(str2));
+        // console.log(reg.test(str3)); // true
+
+
+
+        // 第二种 字面量创建
+        // let reg = /规则/修饰符
+        let reg = /a/i;
+        let str = 'abc';
+        let str2 = '123';
+        let str3 = 'Abc';
+        console.log(reg.test(str));
+        console.log(reg.test(str2));
+        console.log(reg.test(str3));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [1, 2, 3, 4, 5,20,10];
+        // 1.find() 方法返回通过测试（函数内判断）的数组的第一个元素的值。如果没有找到，返回undefined
+        // 需求：找出arr中第一个大于1的数组项
+        const firstItem = arr.find((item) => {
+            return item > 1; // 判断条件
+        })
+        console.log(firstItem); //2 数组
+
+        // 2.findIndex() 返回传入一个测试条件（函数）符合条件的数组第一个元素位置，返回的是索引，如果找不到，那么返回-1
+        const firstIndex = arr.findIndex(item => {
+            return item > 5;
+        })
+        console.log(firstIndex); // 5
+
+        // 3.filter 传入一个判断条件，数组中满足这个条件的数组项会被放在一个新的数组里面并返回出来，它返回的是一个数组。相当于过滤
+        let newArr = arr.filter((item) => {
+            return item > 2;
+        })
+        console.log(newArr); // [3, 4, 5]
+
+        // 4.some 判断数组中是否至少有一项满足判断条件,如果是返回true,否则返回false
+        // 需求：判断arr是否至少有一项比5大
+        const boolean = arr.some((item) => {
+            return item > 5;
+        })
+        console.log(boolean); // true
+
+        // 5.every 判断数组中是否每一项都满足判断条件,如果是返回true,否则返回false
+        // 需求：判断arr是否每一项比0大
+        const boolean2 = arr.every(item => {
+            return item > 5;
+        })
+        console.log(boolean2) // false
+
+        // 6.map 对数组进行循环遍历，对每一项都进行相同的操作，并且把操作后的每一个数组项都放到一个新的数组里面，并返回该新的数组
+        // 需求：把arr转换成[2,4,6,8,10]输出
+        let mapArr = arr.map(item => {
+            return item * 2;
+        })
+        let mapArr2 = arr.map(item => item * 2); // 如果箭头函数的回调函数只有一个return语句，那么可以简写
+        console.log(mapArr);
+        console.log(arr);//map 原数组不变
+    </script>
+</body>
+
+</html>

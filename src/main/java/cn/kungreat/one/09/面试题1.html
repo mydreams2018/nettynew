@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 需求：请把下列的数组变成是: [['苹果','胡萝卜', '花生'], ['梨', '西芹', '坚果']....]
+
+        // 源数组
+        let basket = [
+            { fruit: "苹果", veg: "胡萝卜", nut: "花生" },
+            { fruit: "梨", veg: "西芹", nut: "坚果" },
+            { fruit: "香蕉", veg: "土豆", nut: "杏仁" },
+            { fruit: "西瓜", veg: "豆芽", nut: "核桃" },
+        ];
+
+        // 结果
+        // let result = [['苹果', '胡萝卜', '花生'], ['梨', '西芹', '坚果']]
+        let result = [];
+
+        // 1 不可取
+        basket.forEach(item => {
+            result.push([]);
+            result[result.length - 1].push(item.fruit, item.veg, item.nut);
+        });
+
+        // 2 for in 
+        basket.forEach(item => {
+            result.push([]);
+            for (let k in item) {
+                result[result.length - 1].push(item[k]);
+            }
+        });
+        // 3 map
+        let result2 = basket.map(item => {
+            return Object.values(item) // ['苹果', '胡萝卜', '花生']...
+        })
+        console.log(result);
+        console.log(result2);
+        let arr = [1, 2, 3];
+        console.log(arr[arr.length - 2]);   // arr[3-2]
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 实现二维数组行转列 4行5列
+        let arr = [
+            ["前端", "3人", "8-15k", "本科", 'a'],
+            ["后端", "5人", "10-25k", "研究生", 'b'],
+            ["UI", "2人", "9-11k", "大专", 'c'],
+            ["ETL工程师", "10人", "6-12k", "大专", 'd'],
+        ]
+
+        let result = [];
+        // 是要用来循环产生新的数组的行，源数据一行里面有多少列，那么新数据就要有多少行
+        for (let i = 0; i < arr[0].length; i++) {
+            result.push([]);
+            // 循环源数据的每一行
+            for (let j = 0; j < arr.length; j++) {
+                result[i][j] = arr[j][i];
+            }
+        }
+        console.log(result);
+
+    </script>
+</body>
+
+</html>

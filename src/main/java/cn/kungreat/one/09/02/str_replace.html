@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // replace 用来在一个字符串当中去查找某一段字符，然后如果能找到，那么可以把这段子字符串替换成其他新的字符串
+
+        // replace替换字符串的第一种方式
+        // 语法：replace('你要查找的子字符串',要进行替换的新字符串) , 只会替换掉第一个字符
+        // replaceAll 可以替换掉全部匹配到的字符
+        // let str = 'abcde';
+        // let str2 = 'abcdea';
+        // let newStr = str.replace('a', 'x'); // 子串
+        // let newStr2 = str2.replaceAll('a', 'x');
+        // console.log(newStr); // xbcde
+        // console.log(newStr2); // xbcdex
+
+        // replace替换字符串的第二种方式  
+        // 语法：replace(正则表达式(可以在后面跟修饰符),要进行替换的新字符串)  更强大
+        let str = 'abcde';
+        let str2 = 'abcdea';
+        let str3 = 'abcdeaA';
+        let reg = /a/gi;
+        let newStr = str.replace(reg, 'x');
+        let newStr2 = str2.replace(reg, 'x');
+        let newStr3 = str3.replace(reg, 'x');
+        console.log(newStr); // xbcde
+        console.log(newStr2); // xbcdex
+        console.log(newStr3); // xbcdexx
+    </script>
+</body>
+
+</html>

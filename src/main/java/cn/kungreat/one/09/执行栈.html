@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 执行栈 用来保存代码执行的顺序,先进后出，后进先出
+        // 当js第一次执行我们的脚本，他会创建一个全局环境并且把这个全局环境放进执行栈里面
+        // 函数也有执行环境
+        // 1.首先是全局的执行环境入栈
+        // 2.在全局环境下调用了first函数,再把first函数的环境压入栈中
+        // 3.在first函数里面调用了second函数，再把second函数的环境压入栈中
+        // 4.second执行完毕，于是把second的执行环境从栈中移除(先进后出，后入先出)
+        // 5.回到first的执行环境，再把fist的代码执行完成，从执行栈中再移除
+        // 6.最后把全局的执行环境也出栈，整个程序执行完成
+        // 下面全部是同步的代码
+        console.log('全局环境开始'); // 1
+        let a = 10;
+        function first() {
+            // 进入了first函数的执行环境
+            console.log('函数1'); // 2
+            second();
+            console.log('两次回到函数1'); // 4
+        }
+
+        function second() {
+            // 进入了second函数的执行环境
+            console.log('函数2'); //3 
+        }
+        first();
+        console.log('全局环境结束'); // 5
+    </script>
+</body>
+
+</html>
